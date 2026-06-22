@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tyla Photography</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
@@ -23,7 +23,7 @@ body{
 
 .container{
     width:100%;
-    max-width:1100px;
+    max-width:1200px;
     margin:0 auto;
     background:white;
     padding:40px;
@@ -43,22 +43,31 @@ h1{
     margin-bottom:30px;
 }
 
-.hero-grid{
+.hero-grid,
+.feature-grid,
+.testimonial-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:16px;
     margin-top:20px;
 }
 
-.hero-card{
+.hero-card,
+.feature-card,
+.testimonial-card{
     border-radius:20px;
     overflow:hidden;
-    position:relative;
     box-shadow:0 10px 25px rgba(0,0,0,.12);
     background:#faf7ff;
+    border:1px solid #eee2ff;
 }
 
-.hero-card img{
+.hero-card{
+    position:relative;
+}
+
+.hero-card img,
+.portfolio-img{
     width:100%;
     height:260px;
     object-fit:cover;
@@ -74,6 +83,27 @@ h1{
     color:white;
     padding:18px;
     font-weight:600;
+}
+
+.feature-card,
+.testimonial-card{
+    padding:22px;
+}
+
+.feature-card h3,
+.testimonial-card h3{
+    color:#9a6bff;
+    margin-bottom:10px;
+}
+
+.feature-card p,
+.testimonial-card p,
+.about-box p,
+.contact-box p,
+.booking-box p{
+    color:#555;
+    line-height:1.7;
+    margin:10px 0;
 }
 
 .actions{
@@ -124,13 +154,6 @@ button:hover,
     text-align:center;
 }
 
-.portfolio-img{
-    width:100%;
-    height:160px;
-    object-fit:cover;
-    display:block;
-}
-
 .portfolio-item p{
     padding:12px;
     font-weight:600;
@@ -141,20 +164,10 @@ button:hover,
 .contact-box,
 .booking-box{
     margin-top:20px;
-    padding:20px;
+    padding:22px;
     border:1px solid #eee2ff;
     border-radius:18px;
     background:#faf7ff;
-    text-align:center;
-}
-
-.about-box p,
-.contact-box p,
-.booking-box p{
-    margin:10px 0;
-    color:#555;
-    font-weight:600;
-    line-height:1.6;
 }
 
 .form-group{
@@ -190,6 +203,12 @@ textarea{
     text-decoration:none;
     color:#9a6bff;
 }
+
+.section-divider{
+    height:1px;
+    background:#eee2ff;
+    margin:35px 0;
+}
 </style>
 </head>
 
@@ -222,40 +241,44 @@ textarea{
         <div class="actions">
             <a href="#" class="btn" onclick="showSection('portfolioSection'); return false;">View Portfolio</a>
             <a href="#" class="btn" onclick="showSection('aboutSection'); return false;">About Me</a>
+            <a href="#" class="btn" onclick="showSection('servicesSection'); return false;">Services</a>
+            <a href="#" class="btn" onclick="showSection('testimonialsSection'); return false;">Testimonials</a>
             <a href="#" class="btn" onclick="showSection('bookingSection'); return false;">Book Now</a>
             <a href="#" class="btn" onclick="showSection('contactSection'); return false;">Contact Me</a>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h1>Why Choose Tyla Photography?</h1>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Comfortable Sessions</h3>
+                <p>I make sessions relaxed and fun so you can feel confident in front of the camera.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Creative Editing</h3>
+                <p>Every photo is edited with care to give it a clean, warm, and professional look.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Memorable Moments</h3>
+                <p>From portraits to events, I focus on capturing moments you’ll want to keep forever.</p>
+            </div>
         </div>
     </div>
 
     <div id="portfolioSection" class="section">
         <h1>Portfolio</h1>
-        <p class="subtitle">A few highlights from recent sessions.</p>
+        <p class="subtitle">A larger collection of recent work.</p>
 
         <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518490056288108594/DSCN1362.JPG?ex=6a3a1b91&is=6a38ca11&hm=6095e7ea15edd1738f4d0db885078f727670df83f1cfd262d87e52d88efc9138&" alt="My photo 1">
-                <p>My Photo 1</p>
-            </div>
-            <div class="portfolio-item">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518489914021515374/DSCN1388.JPG?ex=6a3a1b6f&is=6a38c9ef&hm=1c2abf482f1db384be62486b31a7a2ea728b980128fb9ad74e7c15fe91556655&" alt="My photo 2">
-                <p>My Photo 2</p>
-            </div>
-            <div class="portfolio-item">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518489676208672849/DSCN1358.JPG?ex=6a3a1b36&is=6a38c9b6&hm=c3c49946bb404214891b3e068d71e469cf76e9bf5f09bb2853a3dc7e6c0e403a&" alt="My photo 3">
-                <p>My Photo 3</p>
-            </div>
-            <div class="portfolio-item">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394458599850147/DSCN1069.JPG?ex=6a39c289&is=6a387109&hm=9a8fd540eb09a614247a7f26d71c6263ea78dd94034731d5accc7477b3bd5e9d&" alt="My photo 4">
-                <p>My Photo 4</p>
-            </div>
-            <div class="portfolio-item">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394062389121024/DSCN1084.JPG?ex=6a39c22a&is=6a3870aa&hm=1f7c3ea2fbc8cc5f3d360c6fcef64015dd415d56d5792d27eee9c84964de0b2e&" alt="My photo 5">
-                <p>My Photo 5</p>
-            </div>
-            <div class="portfolio-item">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518499868648275988/content.png?ex=6a3a24b5&is=6a38d335&hm=336fd2a3b8391899e32f3f9050fcd4209ba39d8b0fc9104bb58cea662eaa62a3&" alt="My photo 6">
-                <p>My Photo 6</p>
-            </div>
+            <div class="portfolio-item"><img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518490056288108594/DSCN1362.JPG?ex=6a3a1b91&is=6a38ca11&hm=6095e7ea15edd1738f4d0db885078f727670df83f1cfd262d87e52d88efc9138&" alt="Photo 1"><p>My Photo 1</p></div>
+            <div class="portfolio-item"><img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518489914021515374/DSCN1388.JPG?ex=6a3a1b6f&is=6a38c9ef&hm=1c2abf482f1db384be62486b31a7a2ea728b980128fb9ad74e7c15fe91556655&" alt="Photo 2"><p>My Photo 2</p></div>
+            <div class="portfolio-item"><img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518489676208672849/DSCN1358.JPG?ex=6a3a1b36&is=6a38c9b6&hm=c3c49946bb404214891b3e068d71e469cf76e9bf5f09bb2853a3dc7e6c0e403a&" alt="Photo 3"><p>My Photo 3</p></div>
+            <div class="portfolio-item"><img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394458599850147/DSCN1069.JPG?ex=6a39c289&is=6a387109&hm=9a8fd540eb09a614247a7f26d71c6263ea78dd94034731d5accc7477b3bd5e9d&" alt="Photo 4"><p>My Photo 4</p></div>
+            <div class="portfolio-item"><img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394062389121024/DSCN1084.JPG?ex=6a39c22a&is=6a3870aa&hm=1f7c3ea2fbc8cc5f3d360c6fcef64015dd415d56d5792d27eee9c84964de0b2e&" alt="Photo 5"><p>My Photo 5</p></div>
+            <div class="portfolio-item"><img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518499868648275988/content.png?ex=6a3a24b5&is=6a38d335&hm=336fd2a3b8391899e32f3f9050fcd4209ba39d8b0fc9104bb58cea662eaa62a3&" alt="Photo 6"><p>My Photo 6</p></div>
+            <div class="portfolio-item"><img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518490056288108594/DSCN1362.JPG?ex=6a3a1b91&is=6a38ca11&hm=6095e7ea15edd1738f4d0db885078f727670df83f1cfd262d87e52d88efc9138&" alt="Photo 7"><p>My Photo 7</p></div>
+            <div class="portfolio-item"><img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518489914021515374/DSCN1388.JPG?ex=6a3a1b6f&is=6a38c9ef&hm=1c2abf482f1db384be62486b31a7a2ea728b980128fb9ad74e7c15fe91556655&" alt="Photo 8"><p>My Photo 8</p></div>
         </div>
 
         <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
@@ -267,7 +290,53 @@ textarea{
         <div class="about-box">
             <p>Hi, I’m Tyla. I love capturing natural moments, special memories, and beautiful stories through photography.</p>
             <p>My goal is to make every session feel comfortable, creative, and fun.</p>
-            <p>Whether it’s portraits, family photos, or a special event, I’m here to help preserve your memories.</p>
+            <p>I work with portraits, family sessions, events, and special occasions.</p>
+            <p>Each session is designed to help people feel relaxed while getting beautiful photos.</p>
+            <p>I enjoy turning everyday moments into memories that last forever.</p>
+        </div>
+        <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
+    </div>
+
+    <div id="servicesSection" class="section">
+        <h1>Services</h1>
+        <p class="subtitle">Photography services I offer.</p>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Portrait Sessions</h3>
+                <p>Perfect for solo pictures, senior photos, and professional profile shots.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Family Photos</h3>
+                <p>Capture your family in a warm, natural, and memorable way.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Event Coverage</h3>
+                <p>Birthdays, celebrations, and special gatherings photographed with care.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Custom Shoots</h3>
+                <p>Have a special idea? I can help create a photo session that fits your vision.</p>
+            </div>
+        </div>
+        <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
+    </div>
+
+    <div id="testimonialsSection" class="section">
+        <h1>Testimonials</h1>
+        <p class="subtitle">What clients might say about their experience.</p>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <h3>Great Experience</h3>
+                <p>"The session was super comfortable and the pictures came out amazing."</p>
+            </div>
+            <div class="testimonial-card">
+                <h3>Beautiful Photos</h3>
+                <p>"Every photo looked clean, natural, and professional. I loved them all."</p>
+            </div>
+            <div class="testimonial-card">
+                <h3>Friendly and Fun</h3>
+                <p>"The whole process felt easy and enjoyable from start to finish."</p>
+            </div>
         </div>
         <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
     </div>
@@ -304,6 +373,14 @@ textarea{
                     <input type="date" id="preferredDate">
                 </div>
                 <div class="form-group">
+                    <label>Preferred Time</label>
+                    <input type="time" id="preferredTime">
+                </div>
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" id="location">
+                </div>
+                <div class="form-group">
                     <label>Notes</label>
                     <textarea id="notes"></textarea>
                 </div>
@@ -319,6 +396,8 @@ textarea{
         <div class="contact-box">
             <p>Email: <a href="mailto:tsheehan1213@gmail.com">tsheehan1213@gmail.com</a></p>
             <p>Phone: <a href="tel:+17273554104">(727) 355-4104</a></p>
+            <p>Instagram: @tylaphotography</p>
+            <p>Available for portraits, family photos, and events.</p>
         </div>
         <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
     </div>
@@ -329,6 +408,8 @@ function showSection(sectionId) {
     document.getElementById('homeSection').style.display = 'none';
     document.getElementById('portfolioSection').style.display = 'none';
     document.getElementById('aboutSection').style.display = 'none';
+    document.getElementById('servicesSection').style.display = 'none';
+    document.getElementById('testimonialsSection').style.display = 'none';
     document.getElementById('bookingSection').style.display = 'none';
     document.getElementById('contactSection').style.display = 'none';
     document.getElementById(sectionId).style.display = 'block';
@@ -342,6 +423,8 @@ document.getElementById('bookingForm').addEventListener('submit', function(e) {
     const email = document.getElementById('email').value;
     const sessionType = document.getElementById('sessionType').value;
     const preferredDate = document.getElementById('preferredDate').value;
+    const preferredTime = document.getElementById('preferredTime').value;
+    const location = document.getElementById('location').value;
     const notes = document.getElementById('notes').value;
 
     const subject = encodeURIComponent('New Booking Request');
@@ -351,6 +434,8 @@ document.getElementById('bookingForm').addEventListener('submit', function(e) {
         `Email: ${email}\n` +
         `Session Type: ${sessionType}\n` +
         `Preferred Date: ${preferredDate}\n` +
+        `Preferred Time: ${preferredTime}\n` +
+        `Location: ${location}\n` +
         `Notes: ${notes}`
     );
 
