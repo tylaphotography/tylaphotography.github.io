@@ -18,17 +18,15 @@
 body{
     background:linear-gradient(135deg,#f7f2ff,#fff0f7);
     min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
     padding:30px;
 }
 
 .container{
     width:100%;
-    max-width:900px;
+    max-width:1100px;
+    margin:0 auto;
     background:white;
-    padding:50px;
+    padding:40px;
     border-radius:25px;
     box-shadow:0 15px 40px rgba(0,0,0,.1);
 }
@@ -42,26 +40,40 @@ h1{
 .subtitle{
     text-align:center;
     color:#666;
-    margin-bottom:35px;
+    margin-bottom:30px;
 }
 
-.hero{
-    text-align:center;
-    padding:20px 0 10px;
+.hero-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+    margin-top:20px;
 }
 
-.hero p{
-    color:#666;
-    margin-bottom:25px;
-}
-
-.hero-image{
-    width:100%;
-    max-width:520px;
+.hero-card{
     border-radius:20px;
-    display:block;
-    margin:0 auto 25px;
+    overflow:hidden;
+    position:relative;
     box-shadow:0 10px 25px rgba(0,0,0,.12);
+    background:#faf7ff;
+}
+
+.hero-card img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    display:block;
+}
+
+.hero-overlay{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    background:linear-gradient(to top, rgba(0,0,0,.65), transparent);
+    color:white;
+    padding:18px;
+    font-weight:600;
 }
 
 .actions{
@@ -69,7 +81,7 @@ h1{
     gap:15px;
     justify-content:center;
     flex-wrap:wrap;
-    margin-top:20px;
+    margin:30px 0 10px;
 }
 
 button,
@@ -95,6 +107,52 @@ button:hover,
 .section{
     display:none;
     margin-top:35px;
+}
+
+.portfolio-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+    margin-top:20px;
+}
+
+.portfolio-item{
+    background:#faf7ff;
+    border:1px solid #eee2ff;
+    border-radius:18px;
+    overflow:hidden;
+    text-align:center;
+}
+
+.portfolio-img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    display:block;
+}
+
+.portfolio-item p{
+    padding:12px;
+    font-weight:600;
+    color:#555;
+}
+
+.about-box,
+.contact-box{
+    margin-top:20px;
+    padding:20px;
+    border:1px solid #eee2ff;
+    border-radius:18px;
+    background:#faf7ff;
+    text-align:center;
+}
+
+.about-box p,
+.contact-box p{
+    margin:10px 0;
+    color:#555;
+    font-weight:600;
+    line-height:1.6;
 }
 
 .form-group{
@@ -129,52 +187,6 @@ textarea{
     text-decoration:none;
     color:#9a6bff;
 }
-
-.portfolio-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:15px;
-    margin-top:20px;
-}
-
-.portfolio-item{
-    background:#faf7ff;
-    border:1px solid #eee2ff;
-    border-radius:18px;
-    overflow:hidden;
-    text-align:center;
-}
-
-.portfolio-img{
-    width:100%;
-    height:160px;
-    object-fit:cover;
-    display:block;
-}
-
-.portfolio-item p{
-    padding:12px;
-    font-weight:600;
-    color:#555;
-}
-
-.contact-box,
-.about-box{
-    margin-top:20px;
-    padding:20px;
-    border:1px solid #eee2ff;
-    border-radius:18px;
-    background:#faf7ff;
-    text-align:center;
-}
-
-.contact-box p,
-.about-box p{
-    margin:10px 0;
-    color:#555;
-    font-weight:600;
-    line-height:1.6;
-}
 </style>
 </head>
 
@@ -184,11 +196,27 @@ textarea{
     <h1>Tyla Photography</h1>
     <p class="subtitle">Capturing your special moments with style and warmth.</p>
 
-    <div id="homeSection" class="hero">
-        <img class="hero-image" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518499868648275988/content.png?ex=6a3a24b5&is=6a38d335&hm=336fd2a3b8391899e32f3f9050fcd4209ba39d8b0fc9104bb58cea662eaa62a3&" alt="Tyla Photography image">
-        <p>Welcome to Tyla Photography. Browse the portfolio, contact me, or request a session when you're ready.</p>
+    <div id="homeSection">
+        <div class="hero-grid">
+            <div class="hero-card">
+                <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518490056288108594/DSCN1362.JPG?ex=6a3a1b91&is=6a38ca11&hm=6095e7ea15edd1738f4d0db885078f727670df83f1cfd262d87e52d88efc9138&" alt="Photo 1">
+                <div class="hero-overlay">Portrait Moments</div>
+            </div>
+            <div class="hero-card">
+                <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518489914021515374/DSCN1388.JPG?ex=6a3a1b6f&is=6a38c9ef&hm=1c2abf482f1db384be62486b31a7a2ea728b980128fb9ad74e7c15fe91556655&" alt="Photo 2">
+                <div class="hero-overlay">Creative Shots</div>
+            </div>
+            <div class="hero-card">
+                <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518489676208672849/DSCN1358.JPG?ex=6a3a1b36&is=6a38c9b6&hm=c3c49946bb404214891b3e068d71e469cf76e9bf5f09bb2853a3dc7e6c0e403a&" alt="Photo 3">
+                <div class="hero-overlay">Natural Light</div>
+            </div>
+            <div class="hero-card">
+                <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518499868648275988/content.png?ex=6a3a24b5&is=6a38d335&hm=336fd2a3b8391899e32f3f9050fcd4209ba39d8b0fc9104bb58cea662eaa62a3&" alt="Photo 4">
+                <div class="hero-overlay">Featured Image</div>
+            </div>
+        </div>
+
         <div class="actions">
-            <a href="#" class="btn" onclick="showSection('bookingSection'); return false;">Book a Session</a>
             <a href="#" class="btn" onclick="showSection('portfolioSection'); return false;">View Portfolio</a>
             <a href="#" class="btn" onclick="showSection('aboutSection'); return false;">About Me</a>
             <a href="#" class="btn" onclick="showSection('contactSection'); return false;">Contact Me</a>
@@ -232,73 +260,21 @@ textarea{
     <div id="aboutSection" class="section">
         <h1>About Me</h1>
         <p class="subtitle">A little bit about Tyla Photography.</p>
-
         <div class="about-box">
             <p>Hi, I’m Tyla. I love capturing natural moments, special memories, and beautiful stories through photography.</p>
             <p>My goal is to make every session feel comfortable, creative, and fun.</p>
             <p>Whether it’s portraits, family photos, or a special event, I’m here to help preserve your memories.</p>
         </div>
-
         <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
     </div>
 
     <div id="contactSection" class="section">
         <h1>Contact Information</h1>
         <p class="subtitle">Reach out anytime for bookings or questions.</p>
-
         <div class="contact-box">
             <p>Email: <a href="mailto:tsheehan1213@gmail.com">tsheehan1213@gmail.com</a></p>
             <p>Phone: <a href="tel:+17273554104">(727) 355-4104</a></p>
         </div>
-
-        <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
-    </div>
-
-    <div id="bookingSection" class="section">
-        <h1>Book Your Photography Session</h1>
-        <p class="subtitle">Fill out the form below and I'll contact you to confirm your session.</p>
-
-        <form>
-            <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" required>
-            </div>
-
-            <div class="form-group">
-                <label>Phone Number</label>
-                <input type="tel" required>
-            </div>
-
-            <div class="form-group">
-                <label>Session Type</label>
-                <select required>
-                    <option>Wedding</option>
-                    <option>Portrait</option>
-                    <option>Nature</option>
-                    <option>Pet Photography</option>
-                    <option>Family Session</option>
-                    <option>Other</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Preferred Date</label>
-                <input type="date" required>
-            </div>
-
-            <div class="form-group">
-                <label>Location</label>
-                <input type="text">
-            </div>
-
-            <div class="form-group">
-                <label>Tell Me About Your Session</label>
-                <textarea></textarea>
-            </div>
-
-            <button type="submit">Request Booking</button>
-        </form>
-
         <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
     </div>
 </div>
@@ -307,12 +283,10 @@ textarea{
 function showSection(sectionId) {
     document.getElementById('homeSection').style.display = 'none';
     document.getElementById('portfolioSection').style.display = 'none';
-    document.getElementById('bookingSection').style.display = 'none';
     document.getElementById('aboutSection').style.display = 'none';
     document.getElementById('contactSection').style.display = 'none';
     document.getElementById(sectionId).style.display = 'block';
 }
-
 showSection('homeSection');
 </script>
 
