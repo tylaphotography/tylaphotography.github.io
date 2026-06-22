@@ -1,104 +1,189 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tyla's Photography</title>
+<title>Tyla Photography</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: Arial, sans-serif;
+    scroll-behavior:smooth;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:;
-    color:black;
-    line-height:1.6;
+    background:#faf8ff;
+    color:#333;
 }
 
+/* HERO */
 header{
-    background:#CBC3E3 ;
-    color:black ;
+    height:100vh;
+    background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1920");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     text-align:center;
-    padding:90px 40px;
+    color:white;
 }
 
-header h1{
-    font-size:4rem;
+.hero-content h1{
+    font-size:5rem;
+    margin-bottom:10px;
 }
 
-header p{
-    margin-top:10px;
-    font-size:1.2rem;
+.hero-content p{
+    font-size:1.4rem;
+    margin-bottom:30px;
 }
 
-nav{
+.hero-btn{
+    display:inline-block;
+    padding:15px 35px;
+    background:#d6c6ff;
+    color:black;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.hero-btn:hover{
+    transform:translateY(-5px);
     background:white;
+}
+
+/* NAVBAR */
+nav{
+    position:sticky;
+    top:0;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    padding:18px;
     text-align:center;
-    padding:15px;
-    box-shadow:0 2px 5px rgba(0,0,0,.1);
+    box-shadow:0 2px 15px rgba(0,0,0,.08);
+    z-index:1000;
 }
 
 nav a{
     text-decoration:none;
-    color:#333;
-    margin:0 15px;
-    font-weight:bold;
+    color:#444;
+    margin:0 20px;
+    font-weight:600;
+    transition:.3s;
 }
 
+nav a:hover{
+    color:#a678ff;
+}
+
+/* SECTIONS */
 section{
-    max-width:1100px;
+    max-width:1200px;
     margin:auto;
-    padding:60px 20px;
+    padding:90px 25px;
+}
+
+h2{
+    text-align:center;
+    font-size:2.8rem;
+    color:#9a6bff;
+    margin-bottom:25px;
 }
 
 .about{
     text-align:center;
 }
 
+.about p{
+    max-width:850px;
+    margin:auto;
+    line-height:1.9;
+    font-size:1.1rem;
+}
+
+/* GALLERY */
 .gallery{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
 }
 
 .gallery img{
     width:100%;
-    height:300px;
+    height:350px;
     object-fit:cover;
-    border-radius:10px;
+    border-radius:20px;
+    transition:.4s;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
 }
 
-.contact{
+.gallery img:hover{
+    transform:scale(1.05);
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+
+/* CONTACT */
+.contact-box{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:50px;
+    border-radius:25px;
     text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-button{
-    background:black;
+.contact-box p{
+    margin:15px 0;
+    font-size:1.1rem;
+}
+
+.book-btn{
+    display:inline-block;
+    margin-top:20px;
+    background:linear-gradient(45deg,#b388ff,#ff9dd8);
     color:white;
-    border:none;
-    padding:12px 25px;
-    border-radius:5px;
-    cursor:pointer;
+    padding:15px 35px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
 }
 
+.book-btn:hover{
+    transform:translateY(-5px);
+}
+
+/* FOOTER */
 footer{
-    background:#FFC0CB;
-    color:black;
+    background:linear-gradient(45deg,#c7b0ff,#ffb7dd);
+    color:white;
     text-align:center;
-    padding:20px;
+    padding:25px;
+    margin-top:50px;
 }
 </style>
+
 </head>
 
 <body>
 
 <header>
-    <h1>Tyla's Photography</h1>
-    <p>Capturing life's most beautiful moments through my lens.</p>
+    <div class="hero-content">
+        <h1>Tyla Photography</h1>
+        <p>Capturing Life's Most Beautiful Moments Through My Lens</p>
+        <a href="#contact" class="hero-btn">Book a Session</a>
+    </div>
 </header>
 
 <nav>
@@ -109,33 +194,52 @@ footer{
 
 <section id="about" class="about">
     <h2>About Me</h2>
-    <br>
-    <p>
-       Hi! I'm Tyla, a passionate photographer with over 3 years of experience capturing authentic moments, breathtaking landscapes, and unforgettable memories. I specialize in weddings, portraits, nature photography, and pet photography. My goal is to tell meaningful stories through my work and create timeless images that my clients can cherish for years to come. I'm excited to continue growing my business, meeting new clients, and expanding my portfolio.
-    </p>
+
+```
+<p>
+    Hi! I'm Tyla, a passionate photographer with over 3 years of experience
+    capturing authentic moments, breathtaking landscapes, and unforgettable
+    memories. I specialize in weddings, portraits, nature photography, and
+    pet photography. My goal is to tell meaningful stories through my work
+    and create timeless images that my clients can cherish for years to come.
+    I'm excited to continue growing my business, meeting new clients, and
+    expanding my portfolio.
+</p>
+```
+
 </section>
 
 <section id="portfolio">
-    <h2 style="text-align:center; margin-bottom:30px;">My Work</h2>
+    <h2>My Work</h2>
 
-    <div class="gallery">
-        <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518137458380771358/DSCN1348.JPG?ex=6a397bef&is=6a382a6f&hm=30e595e3b34d710ef135e8694f4ef1734b17e43cad5c7c6e808b8c6a84f13148&" alt="Photography Sample">
-        <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518391193908547664/DSCN1365.JPG?ex=6a39bf7e&is=6a386dfe&hm=82aaa11d408cfd716f13dc7ae4ecbe0ffbdb692895abb84a9f8d1f74efa1f862&" alt="Photography Sample">
-        <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518392917461434409/DSCN1097.JPG?ex=6a39c119&is=6a386f99&hm=c2fb696c9618898196ea3edc9752143b68d0dd549f1f3bc7624e4a6a3e5b4d92&" alt="Photography Sample">
-        <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394062389121024/DSCN1084.JPG?ex=6a39c22a&is=6a3870aa&hm=1f7c3ea2fbc8cc5f3d360c6fcef64015dd415d56d5792d27eee9c84964de0b2e&" alt="Photography Sample">
-        <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394214344298588/DSCN1428.JPG?ex=6a39c24f&is=6a3870cf&hm=943dbe4a8dd561ba96d1004f6c1fb5d6d0d4e9150e821c3b55a70d2405e9310c&" alt="Photography Sample">
-        <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394458599850147/DSCN1069.JPG?ex=6a39c289&is=6a387109&hm=9a8fd540eb09a614247a7f26d71c6263ea78dd94034731d5accc7477b3bd5e9d&" alt="Photography Sample">
-    <img src="https://cdn.discordapp.com/attachments/1224857438059106386/1518472514718793778/DSCN1388.JPG?ex=6a3a0b3b&is=6a38b9bb&hm=cb7de1185d6dd591baa01a18209eb89f023f508aebb447c311e9794bfe4135ca& "
-    </div>
+```
+<div class="gallery">
+    <img src="YOUR_IMAGE_1" alt="">
+    <img src="YOUR_IMAGE_2" alt="">
+    <img src="YOUR_IMAGE_3" alt="">
+    <img src="YOUR_IMAGE_4" alt="">
+    <img src="YOUR_IMAGE_5" alt="">
+    <img src="YOUR_IMAGE_6" alt="">
+    <img src="YOUR_IMAGE_7" alt="">
+</div>
+```
+
 </section>
 
-<section id="contact" class="contact">
+<section id="contact">
     <h2>Let's Work Together</h2>
-    <br>
-    <p>Email: tsheehan1213@gmail.com</p>
-    <p>phone number (727)-355-4104</p>
-    <br>
-    <button>Book a Session</button>
+
+```
+<div class="contact-box">
+    <p>📧 Email: tsheehan1213@gmail.com</p>
+    <p>📱 Phone: (727) 355-4104</p>
+
+    <a href="mailto:tsheehan1213@gmail.com" class="book-btn">
+        Book a Session
+    </a>
+</div>
+```
+
 </section>
 
 <footer>
@@ -144,3 +248,5 @@ footer{
 
 </body>
 </html>
+
+
