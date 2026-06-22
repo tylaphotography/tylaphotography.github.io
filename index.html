@@ -73,12 +73,14 @@ h1{
     text-align:center;
     color:#8b4f7a;
     margin-bottom:10px;
+    font-size:clamp(1.6rem, 4vw, 2.4rem);
 }
 
 .subtitle{
     text-align:center;
     color:#6f5b67;
     margin-bottom:30px;
+    font-size:clamp(.95rem, 2.5vw, 1rem);
 }
 
 .hero-grid,
@@ -316,6 +318,83 @@ textarea{
     color:#5e4b56;
     line-height:1.8;
     margin-bottom:10px;
+}
+
+@media (max-width: 768px){
+    body{
+        padding:16px;
+    }
+
+    .container{
+        padding:22px;
+        border-radius:18px;
+    }
+
+    .hero-grid,
+    .feature-grid,
+    .testimonial-grid,
+    .portfolio-grid{
+        grid-template-columns:1fr;
+    }
+
+    .actions{
+        gap:10px;
+    }
+
+    .btn,
+    button{
+        width:100%;
+        max-width:320px;
+    }
+
+    .hero-card img,
+    .portfolio-img{
+        height:220px;
+    }
+
+    .feature-card,
+    .testimonial-card,
+    .price-card,
+    .about-box,
+    .contact-box,
+    .booking-box,
+    .long-section{
+        padding:18px;
+    }
+
+    h1{
+        margin-bottom:8px;
+    }
+}
+
+@media (max-width: 480px){
+    body{
+        padding:10px;
+    }
+
+    .container{
+        padding:16px;
+    }
+
+    .hero-card img,
+    .portfolio-img{
+        height:190px;
+    }
+
+    .hero-overlay{
+        padding:14px;
+        font-size:.95rem;
+    }
+
+    .modal{
+        padding:10px;
+    }
+
+    .modal-close{
+        top:12px;
+        right:16px;
+        font-size:34px;
+    }
 }
 </style>
 </head>
