@@ -148,6 +148,21 @@ textarea{
     font-weight:600;
     color:#555;
 }
+
+.contact-box{
+    margin-top:20px;
+    padding:20px;
+    border:1px solid #eee2ff;
+    border-radius:18px;
+    background:#faf7ff;
+    text-align:center;
+}
+
+.contact-box p{
+    margin:10px 0;
+    color:#555;
+    font-weight:600;
+}
 </style>
 </head>
 
@@ -158,10 +173,11 @@ textarea{
     <p class="subtitle">Capturing your special moments with style and warmth.</p>
 
     <div id="homeSection" class="hero">
-        <p>Welcome to Tyla Photography. Browse the portfolio or request a session when you're ready.</p>
+        <p>Welcome to Tyla Photography. Browse the portfolio, contact me, or request a session when you're ready.</p>
         <div class="actions">
             <a href="#" class="btn" onclick="showSection('bookingSection'); return false;">Book a Session</a>
             <a href="#" class="btn" onclick="showSection('portfolioSection'); return false;">View Portfolio</a>
+            <a href="#" class="btn" onclick="showSection('contactSection'); return false;">Contact Me</a>
         </div>
     </div>
 
@@ -190,6 +206,18 @@ textarea{
                 <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394062389121024/DSCN1084.JPG?ex=6a39c22a&is=6a3870aa&hm=1f7c3ea2fbc8cc5f3d360c6fcef64015dd415d56d5792d27eee9c84964de0b2e&" alt="My photo 5">
                 <p>My Photo 5</p>
             </div>
+        </div>
+
+        <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
+    </div>
+
+    <div id="contactSection" class="section">
+        <h1>Contact Information</h1>
+        <p class="subtitle">Reach out anytime for bookings or questions.</p>
+
+        <div class="contact-box">
+            <p>Email: <a href="mailto:tsheehan1213@gmail.com">tsheehan1213@gmail.com</a></p>
+            <p>Phone: <a href="tel:+17273554104">(727) 355-4104</a></p>
         </div>
 
         <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
@@ -249,6 +277,7 @@ function showSection(sectionId) {
     document.getElementById('homeSection').style.display = 'none';
     document.getElementById('portfolioSection').style.display = 'none';
     document.getElementById('bookingSection').style.display = 'none';
+    document.getElementById('contactSection').style.display = 'none';
     document.getElementById(sectionId).style.display = 'block';
 }
 
