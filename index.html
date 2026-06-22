@@ -276,22 +276,22 @@ textarea{
         <h1>Book a Session</h1>
         <p class="subtitle">Reserve your photography spot below.</p>
         <div class="booking-box">
-            <form>
+            <form id="bookingForm">
                 <div class="form-group">
                     <label>Full Name</label>
-                    <input type="text" value="">
+                    <input type="text" id="fullName" required>
                 </div>
                 <div class="form-group">
                     <label>Phone Number</label>
-                    <input type="tel" value="">
+                    <input type="tel" id="phoneNumber" required>
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" value="">
+                    <input type="email" id="email" required>
                 </div>
                 <div class="form-group">
                     <label>Session Type</label>
-                    <select>
+                    <select id="sessionType">
                         <option>Portrait</option>
                         <option>Family</option>
                         <option>Wedding</option>
@@ -301,11 +301,11 @@ textarea{
                 </div>
                 <div class="form-group">
                     <label>Preferred Date</label>
-                    <input type="date">
+                    <input type="date" id="preferredDate">
                 </div>
                 <div class="form-group">
                     <label>Notes</label>
-                    <textarea></textarea>
+                    <textarea id="notes"></textarea>
                 </div>
                 <button type="submit">Request Booking</button>
             </form>
@@ -333,6 +333,30 @@ function showSection(sectionId) {
     document.getElementById('contactSection').style.display = 'none';
     document.getElementById(sectionId).style.display = 'block';
 }
+
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const fullName = document.getElementById('fullName').value;
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    const email = document.getElementById('email').value;
+    const sessionType = document.getElementById('sessionType').value;
+    const preferredDate = document.getElementById('preferredDate').value;
+    const notes = document.getElementById('notes').value;
+
+    const subject = encodeURIComponent('New Booking Request');
+    const body = encodeURIComponent(
+        `Name: ${fullName}\n` +
+        `Phone: ${phoneNumber}\n` +
+        `Email: ${email}\n` +
+        `Session Type: ${sessionType}\n` +
+        `Preferred Date: ${preferredDate}\n` +
+        `Notes: ${notes}`
+    );
+
+    window.location.href = `mailto:tsheehan1213@gmail.com?subject=${subject}&body=${body}`;
+});
+
 showSection('homeSection');
 </script>
 
