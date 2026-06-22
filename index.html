@@ -158,7 +158,8 @@ textarea{
     color:#555;
 }
 
-.contact-box{
+.contact-box,
+.about-box{
     margin-top:20px;
     padding:20px;
     border:1px solid #eee2ff;
@@ -167,10 +168,12 @@ textarea{
     text-align:center;
 }
 
-.contact-box p{
+.contact-box p,
+.about-box p{
     margin:10px 0;
     color:#555;
     font-weight:600;
+    line-height:1.6;
 }
 </style>
 </head>
@@ -187,6 +190,7 @@ textarea{
         <div class="actions">
             <a href="#" class="btn" onclick="showSection('bookingSection'); return false;">Book a Session</a>
             <a href="#" class="btn" onclick="showSection('portfolioSection'); return false;">View Portfolio</a>
+            <a href="#" class="btn" onclick="showSection('aboutSection'); return false;">About Me</a>
             <a href="#" class="btn" onclick="showSection('contactSection'); return false;">Contact Me</a>
         </div>
     </div>
@@ -220,6 +224,19 @@ textarea{
                 <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518499868648275988/content.png?ex=6a3a24b5&is=6a38d335&hm=336fd2a3b8391899e32f3f9050fcd4209ba39d8b0fc9104bb58cea662eaa62a3&" alt="My photo 6">
                 <p>My Photo 6</p>
             </div>
+        </div>
+
+        <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
+    </div>
+
+    <div id="aboutSection" class="section">
+        <h1>About Me</h1>
+        <p class="subtitle">A little bit about Tyla Photography.</p>
+
+        <div class="about-box">
+            <p>Hi, I’m Tyla. I love capturing natural moments, special memories, and beautiful stories through photography.</p>
+            <p>My goal is to make every session feel comfortable, creative, and fun.</p>
+            <p>Whether it’s portraits, family photos, or a special event, I’m here to help preserve your memories.</p>
         </div>
 
         <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
@@ -291,6 +308,7 @@ function showSection(sectionId) {
     document.getElementById('homeSection').style.display = 'none';
     document.getElementById('portfolioSection').style.display = 'none';
     document.getElementById('bookingSection').style.display = 'none';
+    document.getElementById('aboutSection').style.display = 'none';
     document.getElementById('contactSection').style.display = 'none';
     document.getElementById(sectionId).style.display = 'block';
 }
