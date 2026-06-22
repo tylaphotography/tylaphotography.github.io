@@ -83,7 +83,7 @@ button:hover,
     opacity:.9;
 }
 
-.form-section{
+.section{
     display:none;
     margin-top:35px;
 }
@@ -121,8 +121,32 @@ textarea{
     color:#9a6bff;
 }
 
-.show{
+.portfolio-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+    margin-top:20px;
+}
+
+.portfolio-item{
+    background:#faf7ff;
+    border:1px solid #eee2ff;
+    border-radius:18px;
+    overflow:hidden;
+    text-align:center;
+}
+
+.portfolio-img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
     display:block;
+}
+
+.portfolio-item p{
+    padding:12px;
+    font-weight:600;
+    color:#555;
 }
 </style>
 </head>
@@ -136,12 +160,42 @@ textarea{
     <div id="homeSection" class="hero">
         <p>Welcome to Tyla Photography. Browse the portfolio or request a session when you're ready.</p>
         <div class="actions">
-            <a href="#" class="btn" onclick="showBooking(); return false;">Book a Session</a>
-            <a href="#" class="btn" onclick="alert('Portfolio section can be added here.'); return false;">View Portfolio</a>
+            <a href="#" class="btn" onclick="showSection('bookingSection'); return false;">Book a Session</a>
+            <a href="#" class="btn" onclick="showSection('portfolioSection'); return false;">View Portfolio</a>
         </div>
     </div>
 
-    <div id="bookingSection" class="form-section">
+    <div id="portfolioSection" class="section">
+        <h1>Portfolio</h1>
+        <p class="subtitle">A few highlights from recent sessions.</p>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518490056288108594/DSCN1362.JPG?ex=6a3a1b91&is=6a38ca11&hm=6095e7ea15edd1738f4d0db885078f727670df83f1cfd262d87e52d88efc9138&" alt="My photo 1">
+                <p>My Photo 1</p>
+            </div>
+            <div class="portfolio-item">
+                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518489914021515374/DSCN1388.JPG?ex=6a3a1b6f&is=6a38c9ef&hm=1c2abf482f1db384be62486b31a7a2ea728b980128fb9ad74e7c15fe91556655&" alt="My photo 2">
+                <p>My Photo 2</p>
+            </div>
+            <div class="portfolio-item">
+                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518489676208672849/DSCN1358.JPG?ex=6a3a1b36&is=6a38c9b6&hm=c3c49946bb404214891b3e068d71e469cf76e9bf5f09bb2853a3dc7e6c0e403a&" alt="My photo 3">
+                <p>My Photo 3</p>
+            </div>
+            <div class="portfolio-item">
+                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394458599850147/DSCN1069.JPG?ex=6a39c289&is=6a387109&hm=9a8fd540eb09a614247a7f26d71c6263ea78dd94034731d5accc7477b3bd5e9d&" alt="My photo 4">
+                <p>My Photo 4</p>
+            </div>
+            <div class="portfolio-item">
+                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394062389121024/DSCN1084.JPG?ex=6a39c22a&is=6a3870aa&hm=1f7c3ea2fbc8cc5f3d360c6fcef64015dd415d56d5792d27eee9c84964de0b2e&" alt="My photo 5">
+                <p>My Photo 5</p>
+            </div>
+        </div>
+
+        <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
+    </div>
+
+    <div id="bookingSection" class="section">
         <h1>Book Your Photography Session</h1>
         <p class="subtitle">Fill out the form below and I'll contact you to confirm your session.</p>
 
@@ -186,20 +240,19 @@ textarea{
             <button type="submit">Request Booking</button>
         </form>
 
-        <a href="#" class="back" onclick="showHome(); return false;">← Back</a>
+        <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
     </div>
 </div>
 
 <script>
-function showBooking() {
+function showSection(sectionId) {
     document.getElementById('homeSection').style.display = 'none';
-    document.getElementById('bookingSection').style.display = 'block';
+    document.getElementById('portfolioSection').style.display = 'none';
+    document.getElementById('bookingSection').style.display = 'none';
+    document.getElementById(sectionId).style.display = 'block';
 }
 
-function showHome() {
-    document.getElementById('bookingSection').style.display = 'none';
-    document.getElementById('homeSection').style.display = 'block';
-}
+showSection('homeSection');
 </script>
 
 </body>
