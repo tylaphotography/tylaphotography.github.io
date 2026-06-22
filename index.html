@@ -1,149 +1,151 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tyla's Photography</title>
-
-<style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: Arial, sans-serif;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
 }
 
 body{
-    background:;
-    color:black;
-    line-height:1.6;
+    background:#f8f8f8;
+    color:#333;
+    line-height:1.7;
 }
 
+/* HERO SECTION */
 header{
-    background:#CBC3E3 ;
-    color:black ;
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
+    url('YOUR-BEST-PHOTO-HERE.jpg');
+    background-size:cover;
+    background-position:center;
+    color:white;
     text-align:center;
-    padding:90px 40px;
+    padding:140px 20px;
 }
 
 header h1{
     font-size:4rem;
+    margin-bottom:10px;
 }
 
 header p{
-    margin-top:10px;
-    font-size:1.2rem;
+    font-size:1.3rem;
 }
 
+/* NAVBAR */
 nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
     background:white;
-    text-align:center;
-    padding:15px;
-    box-shadow:0 2px 5px rgba(0,0,0,.1);
+    padding:18px;
+    box-shadow:0 2px 15px rgba(0,0,0,.08);
 }
 
 nav a{
     text-decoration:none;
-    color:#333;
-    margin:0 15px;
-    font-weight:bold;
+    color:#444;
+    margin:0 20px;
+    font-weight:600;
+    transition:.3s;
 }
 
+nav a:hover{
+    color:#c8a2c8;
+}
+
+/* SECTIONS */
 section{
-    max-width:1100px;
+    max-width:1200px;
     margin:auto;
-    padding:60px 20px;
+    padding:80px 25px;
 }
 
-.about{
+section h2{
     text-align:center;
+    margin-bottom:30px;
+    font-size:2.5rem;
 }
 
+/* ABOUT */
+.about{
+    background:white;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    padding:50px;
+}
+
+/* GALLERY */
 .gallery{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
 }
 
 .gallery img{
     width:100%;
-    height:300px;
+    height:350px;
     object-fit:cover;
-    border-radius:10px;
+    border-radius:15px;
+    transition:.4s;
+    box-shadow:0 8px 25px rgba(0,0,0,.1);
 }
 
-.contact{
+.gallery img:hover{
+    transform:scale(1.04);
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
+}
+
+/* SERVICES */
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
     text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+/* CONTACT */
+.contact{
+    background:white;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    padding:50px;
 }
 
 button{
-    background:black;
+    background:#c8a2c8;
     color:white;
     border:none;
-    padding:12px 25px;
-    border-radius:5px;
+    padding:15px 35px;
+    border-radius:50px;
+    font-size:1rem;
     cursor:pointer;
+    transition:.3s;
 }
 
+button:hover{
+    background:#b48cb4;
+    transform:translateY(-2px);
+}
+
+/* FOOTER */
 footer{
-    background:#FFC0CB;
-    color:blue;
+    background:#222;
+    color:white;
     text-align:center;
-    padding:20px;
+    padding:25px;
+    margin-top:50px;
 }
-</style>
-</head>
-
-<body>
-
-<header>
-    <h1>Tyla's Photography</h1>
-    <p>Capturing life's most beautiful moments through my lens.</p>
-</header>
-
-<nav>
-    <a href="#about">About Me</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<section id="about" class="about">
-    <h2>About Me</h2>
-    <br>
-    <p>I'm a passionate photographer with over 3 years of experience capturing authentic moments, breathtaking landscapes, and unforgettable memories. Photography is more than just taking pictures—it's about telling a story and preserving life's most meaningful moments.
-
-I specialize in weddings, portraits, pets, nature photography, and more, creating images that you and your loved ones can cherish for years to come. My goal is to make every session comfortable, enjoyable, and tailored to your unique vision.
-
-I'm excited to continue growing my business, meeting new clients, and building a portfolio filled with beautiful memories. I look forward to working with you and capturing the moments that matter most! 📸✨
-    </p>
-</section>
-
-<section id="portfolio">
-    <h2 style="text-align:center; margin-bottom:30px;">My Work</h2>
-
-    <div class="gallery">
-        <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518137458380771358/DSCN1348.JPG?ex=6a397bef&is=6a382a6f&hm=30e595e3b34d710ef135e8694f4ef1734b17e43cad5c7c6e808b8c6a84f13148&" alt="Photography Sample">
-        <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518391193908547664/DSCN1365.JPG?ex=6a39bf7e&is=6a386dfe&hm=82aaa11d408cfd716f13dc7ae4ecbe0ffbdb692895abb84a9f8d1f74efa1f862&" alt="Photography Sample">
-        <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518392917461434409/DSCN1097.JPG?ex=6a39c119&is=6a386f99&hm=c2fb696c9618898196ea3edc9752143b68d0dd549f1f3bc7624e4a6a3e5b4d92&" alt="Photography Sample">
-        <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394062389121024/DSCN1084.JPG?ex=6a39c22a&is=6a3870aa&hm=1f7c3ea2fbc8cc5f3d360c6fcef64015dd415d56d5792d27eee9c84964de0b2e&" alt="Photography Sample">
-        <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394214344298588/DSCN1428.JPG?ex=6a39c24f&is=6a3870cf&hm=943dbe4a8dd561ba96d1004f6c1fb5d6d0d4e9150e821c3b55a70d2405e9310c&" alt="Photography Sample">
-        <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394458599850147/DSCN1069.JPG?ex=6a39c289&is=6a387109&hm=9a8fd540eb09a614247a7f26d71c6263ea78dd94034731d5accc7477b3bd5e9d&" alt="Photography Sample">
-    <img src="https://cdn.discordapp.com/attachments/1224857438059106386/1518472514718793778/DSCN1388.JPG?ex=6a3a0b3b&is=6a38b9bb&hm=cb7de1185d6dd591baa01a18209eb89f023f508aebb447c311e9794bfe4135ca& "
-    </div>
-</section>
-
-<section id="contact" class="contact">
-    <h2>Let's Work Together</h2>
-    <br>
-    <p>Email: tsheehan1213@gmail.com</p>
-    <p>Instagram: N/A</p>
-    <br>
-    <button>Book a Session</button>
-</section>
-
-<footer>
-    <p>© 2026 Tyla Photography. All Rights Reserved.</p>
-</footer>
-
-</body>
-</html>
