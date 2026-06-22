@@ -4,173 +4,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tyla Photography</title>
+<title>Book a Session | Tyla Photography</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    scroll-behavior:smooth;
     font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:#faf8ff;
-    color:#333;
-}
-
-/* HERO */
-header{
-    height:100vh;
-    background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
-    url("https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1920");
-    background-size:cover;
-    background-position:center;
+    background:linear-gradient(135deg,#f7f2ff,#fff0f7);
+    min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    text-align:center;
-    color:white;
+    padding:30px;
 }
 
-.hero-content h1{
-    font-size:5rem;
-    margin-bottom:10px;
-}
-
-.hero-content p{
-    font-size:1.4rem;
-    margin-bottom:30px;
-}
-
-.hero-btn{
-    display:inline-block;
-    padding:15px 35px;
-    background:#d6c6ff;
-    color:black;
-    text-decoration:none;
-    border-radius:50px;
-    font-weight:600;
-    transition:.3s;
-}
-
-.hero-btn:hover{
-    transform:translateY(-5px);
-    background:white;
-}
-
-/* NAVBAR */
-nav{
-    position:sticky;
-    top:0;
-    background:rgba(255,255,255,.85);
-    backdrop-filter:blur(10px);
-    padding:18px;
-    text-align:center;
-    box-shadow:0 2px 15px rgba(0,0,0,.08);
-    z-index:1000;
-}
-
-nav a{
-    text-decoration:none;
-    color:#444;
-    margin:0 20px;
-    font-weight:600;
-    transition:.3s;
-}
-
-nav a:hover{
-    color:#a678ff;
-}
-
-/* SECTIONS */
-section{
-    max-width:1200px;
-    margin:auto;
-    padding:90px 25px;
-}
-
-h2{
-    text-align:center;
-    font-size:2.8rem;
-    color:#9a6bff;
-    margin-bottom:25px;
-}
-
-.about{
-    text-align:center;
-}
-
-.about p{
-    max-width:850px;
-    margin:auto;
-    line-height:1.9;
-    font-size:1.1rem;
-}
-
-/* GALLERY */
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:25px;
-}
-
-.gallery img{
+.container{
     width:100%;
-    height:350px;
-    object-fit:cover;
-    border-radius:20px;
-    transition:.4s;
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
-}
-
-.gallery img:hover{
-    transform:scale(1.05);
-    box-shadow:0 15px 35px rgba(0,0,0,.25);
-}
-
-/* CONTACT */
-.contact-box{
-    max-width:700px;
-    margin:auto;
+    max-width:800px;
     background:white;
     padding:50px;
     border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,.1);
+}
+
+h1{
     text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    color:#9a6bff;
+    margin-bottom:10px;
 }
 
-.contact-box p{
-    margin:15px 0;
-    font-size:1.1rem;
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:35px;
 }
 
-.book-btn{
-    display:inline-block;
-    margin-top:20px;
+.form-group{
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    border:2px solid #e6ddff;
+    border-radius:12px;
+    font-size:1rem;
+}
+
+textarea{
+    resize:vertical;
+    min-height:120px;
+}
+
+button{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:50px;
     background:linear-gradient(45deg,#b388ff,#ff9dd8);
     color:white;
-    padding:15px 35px;
-    border-radius:50px;
-    text-decoration:none;
+    font-size:1rem;
     font-weight:bold;
-    transition:.3s;
+    cursor:pointer;
 }
 
-.book-btn:hover{
-    transform:translateY(-5px);
+button:hover{
+    opacity:.9;
 }
 
-/* FOOTER */
-footer{
-    background:linear-gradient(45deg,#c7b0ff,#ffb7dd);
-    color:white;
+.back{
+    display:block;
     text-align:center;
-    padding:25px;
-    margin-top:50px;
+    margin-top:20px;
+    text-decoration:none;
+    color:#9a6bff;
 }
 </style>
 
@@ -178,77 +100,64 @@ footer{
 
 <body>
 
-<header>
-    <div class="hero-content">
-        <h1>Tyla Photography</h1>
-        <p>Capturing Life's Most Beautiful Moments Through My Lens</p>
-        <a href="#contact" class="hero-btn">Book a Session</a>
-    </div>
-</header>
-
-<nav>
-    <a href="#about">About Me</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<section id="about" class="about">
-    <h2>About Me</h2>
+<div class="container">
 
 ```
-<p>
-    Hi! I'm Tyla, a passionate photographer with over 3 years of experience
-    capturing authentic moments, breathtaking landscapes, and unforgettable
-    memories. I specialize in weddings, portraits, nature photography, and
-    pet photography. My goal is to tell meaningful stories through my work
-    and create timeless images that my clients can cherish for years to come.
-    I'm excited to continue growing my business, meeting new clients, and
-    expanding my portfolio.
+<h1>Book Your Photography Session</h1>
+
+<p class="subtitle">
+    Fill out the form below and I'll contact you to confirm your session.
 </p>
+
+<form>
+
+    <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" required>
+    </div>
+
+    <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" required>
+    </div>
+
+    <div class="form-group">
+        <label>Session Type</label>
+        <select required>
+            <option>Wedding</option>
+            <option>Portrait</option>
+            <option>Nature</option>
+            <option>Pet Photography</option>
+            <option>Family Session</option>
+            <option>Other</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Preferred Date</label>
+        <input type="date" required>
+    </div>
+
+    <div class="form-group">
+        <label>Location</label>
+        <input type="text">
+    </div>
+
+    <div class="form-group">
+        <label>Tell Me About Your Session</label>
+        <textarea></textarea>
+    </div>
+
+    <button type="submit">
+        Request Booking
+    </button>
+
+</form>
+
+<a href="index.html" class="back">← Back to Portfolio</a>
 ```
 
-</section>
-
-<section id="portfolio">
-    <h2>My Work</h2>
-
-```
-<div class="gallery">
-    <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394458599850147/DSCN1069.JPG?ex=6a39c289&is=6a387109&hm=9a8fd540eb09a614247a7f26d71c6263ea78dd94034731d5accc7477b3bd5e9d&" alt="">
-    <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394062389121024/DSCN1084.JPG?ex=6a39c22a&is=6a3870aa&hm=1f7c3ea2fbc8cc5f3d360c6fcef64015dd415d56d5792d27eee9c84964de0b2e&" alt="">
-    <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518391193908547664/DSCN1365.JPG?ex=6a39bf7e&is=6a386dfe&hm=82aaa11d408cfd716f13dc7ae4ecbe0ffbdb692895abb84a9f8d1f74efa1f862&" alt="">
-    <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518137458380771358/DSCN1348.JPG?ex=6a397bef&is=6a382a6f&hm=30e595e3b34d710ef135e8694f4ef1734b17e43cad5c7c6e808b8c6a84f13148&" alt="">
-    <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518489676208672849/DSCN1358.JPG?ex=6a3a1b36&is=6a38c9b6&hm=c3c49946bb404214891b3e068d71e469cf76e9bf5f09bb2853a3dc7e6c0e403a&" alt="">
-    <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518489914021515374/DSCN1388.JPG?ex=6a3a1b6f&is=6a38c9ef&hm=1c2abf482f1db384be62486b31a7a2ea728b980128fb9ad74e7c15fe91556655&" alt="">
-    <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518490056288108594/DSCN1362.JPG?ex=6a3a1b91&is=6a38ca11&hm=6095e7ea15edd1738f4d0db885078f727670df83f1cfd262d87e52d88efc9138&" alt="">
 </div>
-```
-
-</section>
-
-<section id="contact">
-    <h2>Let's Work Together</h2>
-
-```
-<div class="contact-box">
-    <p>📧 Email: tsheehan1213@gmail.com</p>
-    <p>📱 Phone: (727) 355-4104</p>
-
-        <button type="submit">Request Booking</button>
-    </form>
-</div>
-
-</body>
-</html>
-    </a>
-</div>
-```
-
-</section>
-
-<footer>
-    <p>© 2026 Tyla Photography. All Rights Reserved.</p>
-</footer>
 
 </body>
 </html>
