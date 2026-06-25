@@ -198,55 +198,25 @@ button:hover,
     margin-top:35px;
 }
 
-.portfolio-header{
-    text-align:center;
-    margin-bottom:20px;
-}
-
-.portfolio-header p{
-    color:#6f5b67;
-    max-width:700px;
-    margin:10px auto 0;
-    line-height:1.7;
-}
-
-.portfolio-grid{
+.portfolio-basic{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:14px;
     margin-top:20px;
 }
 
-.portfolio-item{
-    background:#fff;
-    border:1px solid #f3c5da;
-    border-radius:22px;
-    overflow:hidden;
-    box-shadow:0 10px 25px rgba(0,0,0,.12);
-    transition:transform .2s ease, box-shadow .2s ease;
+.portfolio-basic img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:16px;
     cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+    transition:transform .2s ease;
 }
 
-.portfolio-item:hover{
-    transform:translateY(-4px);
-    box-shadow:0 14px 30px rgba(0,0,0,.16);
-}
-
-.portfolio-img{
-    height:280px;
-}
-
-.portfolio-item p{
-    padding:14px 16px 6px;
-    font-weight:700;
-    color:#8b4f7a;
-}
-
-.portfolio-item span{
-    display:block;
-    padding:0 16px 16px;
-    color:#6f5b67;
-    font-size:.95rem;
+.portfolio-basic img:hover{
+    transform:scale(1.02);
 }
 
 .about-box,
@@ -296,12 +266,6 @@ textarea{
     color:#8b4f7a;
 }
 
-.section-divider{
-    height:1px;
-    background:#f3c5da;
-    margin:35px 0;
-}
-
 .modal{
     display:none;
     position:fixed;
@@ -330,42 +294,6 @@ textarea{
     line-height:1;
 }
 
-.long-section{
-    margin-top:30px;
-    padding:25px;
-    background:#fff7fb;
-    border:1px solid #f3c5da;
-    border-radius:20px;
-}
-
-.long-section h2{
-    color:#8b4f7a;
-    margin-bottom:12px;
-}
-
-.long-section p{
-    color:#5e4b56;
-    line-height:1.8;
-    margin-bottom:10px;
-}
-
-.comment-list{
-    margin-top:20px;
-    display:grid;
-    gap:12px;
-}
-
-.comment-item{
-    padding:14px;
-    border-radius:14px;
-    background:#fff;
-    border:1px solid #f3c5da;
-}
-
-.comment-item strong{
-    color:#8b4f7a;
-}
-
 @media (max-width: 768px){
     body{ padding:16px; }
     .container{
@@ -375,7 +303,7 @@ textarea{
     .hero-grid,
     .feature-grid,
     .testimonial-grid,
-    .portfolio-grid{
+    .portfolio-basic{
         grid-template-columns:1fr;
     }
     .actions{ gap:10px; }
@@ -384,7 +312,7 @@ textarea{
         max-width:320px;
     }
     .hero-card img,
-    .portfolio-img{
+    .portfolio-basic img{
         height:220px;
     }
     .feature-card,
@@ -393,7 +321,6 @@ textarea{
     .about-box,
     .contact-box,
     .booking-box,
-    .long-section,
     .comment-box{
         padding:18px;
     }
@@ -403,7 +330,7 @@ textarea{
     body{ padding:10px; }
     .container{ padding:16px; }
     .hero-card img,
-    .portfolio-img{
+    .portfolio-basic img{
         height:190px;
     }
     .hero-overlay{
@@ -451,56 +378,19 @@ textarea{
             <a href="#" class="btn" onclick="showSection('aboutSection'); return false;">About Me</a>
             <a href="#" class="btn" onclick="showSection('servicesSection'); return false;">Services</a>
             <a href="#" class="btn" onclick="showSection('testimonialsSection'); return false;">Testimonials</a>
-            <a href="https://docs.google.com/forms/d/1F4U8qazQS0_dGJGlP0TOr796hsDt-mvJ_frzosQlMOw/edit" class="btn" target="_blank" rel="noopener noreferrer">Book Now</a>
             <a href="#" class="btn" onclick="showSection('contactSection'); return false;">Contact Me</a>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <h1>Why Choose Tyla Photography?</h1>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>Comfortable Sessions</h3>
-                <p>I make sessions relaxed and fun so you can feel confident in front of the camera.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Creative Editing</h3>
-                <p>Every photo is edited with care to give it a clean, warm, and professional look.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Memorable Moments</h3>
-                <p>From portraits to events, I focus on capturing moments you’ll want to keep forever.</p>
-            </div>
         </div>
     </div>
 
     <div id="portfolioSection" class="section">
-        <div class="portfolio-header">
-            <h1>Portfolio</h1>
-            <p>A cleaner, more polished collection of outdoor people photos.</p>
-        </div>
+        <h1>Portfolio</h1>
+        <p class="subtitle">Click any picture to view it larger.</p>
 
-        <div class="portfolio-grid">
-            <div class="portfolio-item" onclick="openModal(this.querySelector('img').src)">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1418770197032079403/1519601190797578301/866B6D2B-BB96-447B-A23E-530BEC70125F.jpg?ex=6a3e2664&is=6a3cd4e4&hm=9a6a38a52fac8f8e824c20c574df577640bb63dcb35007267c16fda827e15b97&" alt="People 1">
-                <p>People</p>
-                <span>Outdoor portrait</span>
-            </div>
-            <div class="portfolio-item" onclick="openModal(this.querySelector('img').src)">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1418770197032079403/1519601252445716580/A6CDBF10-7F11-4A4A-BDAA-F48EB7666BD5.jpg?ex=6a3e2673&is=6a3cd4f3&hm=5d24b38ae0325031a287507eb676f4936c4cedc6521074f6037b4e2897ade7b7&" alt="People 2">
-                <p>People</p>
-                <span>Natural light</span>
-            </div>
-            <div class="portfolio-item" onclick="openModal(this.querySelector('img').src)">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518490056288108594/DSCN1362.JPG?ex=6a3e1011&is=6a3cbe91&hm=c804ebeefad266f8dedf07a9723c89f1d364d971baa5bc477ad4fa1c873b420f&" alt="People 3">
-                <p>People</p>
-                <span>Golden hour</span>
-            </div>
-            <div class="portfolio-item" onclick="openModal(this.querySelector('img').src)">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394062389121024/DSCN1084.JPG?ex=6a3db6aa&is=6a3c652a&hm=3396a90b268300da2f1a1b1ff0761ab2c5f6617a8f5a64134aebd52878dbc76f&" alt="People 4">
-                <p>People</p>
-                <span>Outdoor session</span>
-            </div>
+        <div class="portfolio-basic">
+            <img src="https://cdn.discordapp.com/attachments/1418770197032079403/1519601190797578301/866B6D2B-BB96-447B-A23E-530BEC70125F.jpg?ex=6a3e2664&is=6a3cd4e4&hm=9a6a38a52fac8f8e824c20c574df577640bb63dcb35007267c16fda827e15b97&" alt="Portfolio 1" onclick="openModal(this.src)">
+            <img src="https://cdn.discordapp.com/attachments/1418770197032079403/1519601252445716580/A6CDBF10-7F11-4A4A-BDAA-F48EB7666BD5.jpg?ex=6a3e2673&is=6a3cd4f3&hm=5d24b38ae0325031a287507eb676f4936c4cedc6521074f6037b4e2897ade7b7&" alt="Portfolio 2" onclick="openModal(this.src)">
+            <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518490056288108594/DSCN1362.JPG?ex=6a3e1011&is=6a3cbe91&hm=c804ebeefad266f8dedf07a9723c89f1d364d971baa5bc477ad4fa1c873b420f&" alt="Portfolio 3" onclick="openModal(this.src)">
+            <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394062389121024/DSCN1084.JPG?ex=6a3db6aa&is=6a3c652a&hm=3396a90b268300da2f1a1b1ff0761ab2c5f6617a8f5a64134aebd52878dbc76f&" alt="Portfolio 4" onclick="openModal(this.src)">
         </div>
 
         <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
@@ -554,19 +444,6 @@ textarea{
         <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
     </div>
 
-    <div id="bookingSection" class="section">
-        <h1>Book a Session</h1>
-        <div class="booking-box">
-            <form id="bookingForm">
-                <div class="form-group"><label>Full Name</label><input type="text" id="fullName" required></div>
-                <div class="form-group"><label>Phone Number</label><input type="tel" id="phoneNumber" required></div>
-                <div class="form-group"><label>Email</label><input type="email" id="email" required></div>
-                <button type="submit">Request Booking</button>
-            </form>
-        </div>
-        <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
-    </div>
-
     <div id="contactSection" class="section">
         <h1>Contact Information</h1>
         <div class="contact-box">
@@ -589,7 +466,6 @@ function showSection(sectionId) {
     document.getElementById('aboutSection').style.display = 'none';
     document.getElementById('servicesSection').style.display = 'none';
     document.getElementById('testimonialsSection').style.display = 'none';
-    document.getElementById('bookingSection').style.display = 'none';
     document.getElementById('contactSection').style.display = 'none';
     document.getElementById(sectionId).style.display = 'block';
 }
