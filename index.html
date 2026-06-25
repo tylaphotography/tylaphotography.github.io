@@ -157,7 +157,8 @@ h1{
 .about-box p,
 .contact-box p,
 .booking-box p,
-.price-card p{
+.price-card p,
+.comment-list p{
     color:#5e4b56;
     line-height:1.7;
     margin:10px 0;
@@ -197,33 +198,61 @@ button:hover,
     margin-top:35px;
 }
 
+.portfolio-header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.portfolio-header p{
+    color:#6f5b67;
+    max-width:700px;
+    margin:10px auto 0;
+    line-height:1.7;
+}
+
 .portfolio-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:15px;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:18px;
     margin-top:20px;
 }
 
 .portfolio-item{
-    background:#fff7fb;
+    background:#fff;
     border:1px solid #f3c5da;
-    border-radius:18px;
+    border-radius:22px;
     overflow:hidden;
-    text-align:center;
-    display:block;
-    text-decoration:none;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    transition:transform .2s ease, box-shadow .2s ease;
     cursor:pointer;
 }
 
+.portfolio-item:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 30px rgba(0,0,0,.16);
+}
+
+.portfolio-img{
+    height:280px;
+}
+
 .portfolio-item p{
-    padding:12px;
-    font-weight:600;
-    color:#5e4b56;
+    padding:14px 16px 6px;
+    font-weight:700;
+    color:#8b4f7a;
+}
+
+.portfolio-item span{
+    display:block;
+    padding:0 16px 16px;
+    color:#6f5b67;
+    font-size:.95rem;
 }
 
 .about-box,
 .contact-box,
-.booking-box{
+.booking-box,
+.comment-box{
     margin-top:20px;
     padding:22px;
     border:1px solid #f3c5da;
@@ -320,76 +349,68 @@ textarea{
     margin-bottom:10px;
 }
 
-@media (max-width: 768px){
-    body{
-        padding:16px;
-    }
+.comment-list{
+    margin-top:20px;
+    display:grid;
+    gap:12px;
+}
 
+.comment-item{
+    padding:14px;
+    border-radius:14px;
+    background:#fff;
+    border:1px solid #f3c5da;
+}
+
+.comment-item strong{
+    color:#8b4f7a;
+}
+
+@media (max-width: 768px){
+    body{ padding:16px; }
     .container{
         padding:22px;
         border-radius:18px;
     }
-
     .hero-grid,
     .feature-grid,
     .testimonial-grid,
     .portfolio-grid{
         grid-template-columns:1fr;
     }
-
-    .actions{
-        gap:10px;
-    }
-
-    .btn,
-    button{
+    .actions{ gap:10px; }
+    .btn, button{
         width:100%;
         max-width:320px;
     }
-
     .hero-card img,
     .portfolio-img{
         height:220px;
     }
-
     .feature-card,
     .testimonial-card,
     .price-card,
     .about-box,
     .contact-box,
     .booking-box,
-    .long-section{
+    .long-section,
+    .comment-box{
         padding:18px;
-    }
-
-    h1{
-        margin-bottom:8px;
     }
 }
 
 @media (max-width: 480px){
-    body{
-        padding:10px;
-    }
-
-    .container{
-        padding:16px;
-    }
-
+    body{ padding:10px; }
+    .container{ padding:16px; }
     .hero-card img,
     .portfolio-img{
         height:190px;
     }
-
     .hero-overlay{
         padding:14px;
         font-size:.95rem;
     }
-
-    .modal{
-        padding:10px;
-    }
-
+    .modal{ padding:10px; }
     .modal-close{
         top:12px;
         right:16px;
@@ -430,7 +451,7 @@ textarea{
             <a href="#" class="btn" onclick="showSection('aboutSection'); return false;">About Me</a>
             <a href="#" class="btn" onclick="showSection('servicesSection'); return false;">Services</a>
             <a href="#" class="btn" onclick="showSection('testimonialsSection'); return false;">Testimonials</a>
-            <a href="#" class="btn" onclick="showSection('bookingSection'); return false;">Book Now</a>
+            <a href="https://docs.google.com/forms/d/1F4U8qazQS0_dGJGlP0TOr796hsDt-mvJ_frzosQlMOw/edit" class="btn" target="_blank" rel="noopener noreferrer">Book Now</a>
             <a href="#" class="btn" onclick="showSection('contactSection'); return false;">Contact Me</a>
         </div>
 
@@ -451,58 +472,34 @@ textarea{
                 <p>From portraits to events, I focus on capturing moments you’ll want to keep forever.</p>
             </div>
         </div>
-
-        <div class="long-section">
-            <h2>My Photography Style</h2>
-            <p>I love creating photos that feel natural, bright, and full of personality. My work focuses on real smiles, soft colors, and moments that tell a story.</p>
-            <p>Every session is planned to help clients feel relaxed and comfortable. That way, the photos look genuine and not overly posed.</p>
-            <p>Whether it's a portrait session, a family gathering, or a special event, I try to capture the feeling of the moment so you can look back and remember it clearly.</p>
-        </div>
-
-        <div class="long-section">
-            <h2>What to Expect</h2>
-            <p>When you book a session, we’ll talk about the style, location, and the kind of photos you want. I’ll help guide the session so everything runs smoothly.</p>
-            <p>After the shoot, I carefully select and edit the best images to make sure they look polished and beautiful.</p>
-            <p>I want every client to feel happy with their photos and excited to share them.</p>
-        </div>
     </div>
 
     <div id="portfolioSection" class="section">
-        <h1>Portfolio</h1>
-        <p class="subtitle">A larger collection of recent work.</p>
+        <div class="portfolio-header">
+            <h1>Portfolio</h1>
+            <p>A cleaner, more polished collection of outdoor people photos.</p>
+        </div>
 
         <div class="portfolio-grid">
             <div class="portfolio-item" onclick="openModal(this.querySelector('img').src)">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518499868648275988/content.png?ex=6a3a24b5&is=6a38d335&hm=336fd2a3b8391899e32f3f9050fcd4209ba39d8b0fc9104bb58cea662eaa62a3&" alt="Photo 1">
-                <p>My Photo 1</p>
+                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1418770197032079403/1519601190797578301/866B6D2B-BB96-447B-A23E-530BEC70125F.jpg?ex=6a3e2664&is=6a3cd4e4&hm=9a6a38a52fac8f8e824c20c574df577640bb63dcb35007267c16fda827e15b97&" alt="People 1">
+                <p>People</p>
+                <span>Outdoor portrait</span>
             </div>
             <div class="portfolio-item" onclick="openModal(this.querySelector('img').src)">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518490056288108594/DSCN1362.JPG?ex=6a3a1b91&is=6a38ca11&hm=6095e7ea15edd1738f4d0db885078f727670df83f1cfd262d87e52d88efc9138&" alt="Photo 2">
-                <p>My Photo 2</p>
+                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1418770197032079403/1519601252445716580/A6CDBF10-7F11-4A4A-BDAA-F48EB7666BD5.jpg?ex=6a3e2673&is=6a3cd4f3&hm=5d24b38ae0325031a287507eb676f4936c4cedc6521074f6037b4e2897ade7b7&" alt="People 2">
+                <p>People</p>
+                <span>Natural light</span>
             </div>
             <div class="portfolio-item" onclick="openModal(this.querySelector('img').src)">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518489676208672849/DSCN1358.JPG?ex=6a3a1b36&is=6a38c9b6&hm=c3c49946bb404214891b3e068d71e469cf76e9bf5f09bb2853a3dc7e6c0e403a&" alt="Photo 3">
-                <p>My Photo 3</p>
+                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518490056288108594/DSCN1362.JPG?ex=6a3e1011&is=6a3cbe91&hm=c804ebeefad266f8dedf07a9723c89f1d364d971baa5bc477ad4fa1c873b420f&" alt="People 3">
+                <p>People</p>
+                <span>Golden hour</span>
             </div>
             <div class="portfolio-item" onclick="openModal(this.querySelector('img').src)">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394458599850147/DSCN1069.JPG?ex=6a39c289&is=6a387109&hm=9a8fd540eb09a614247a7f26d71c6263ea78dd94034731d5accc7477b3bd5e9d&" alt="Photo 4">
-                <p>My Photo 4</p>
-            </div>
-            <div class="portfolio-item" onclick="openModal(this.querySelector('img').src)">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394062389121024/DSCN1084.JPG?ex=6a39c22a&is=6a3870aa&hm=1f7c3ea2fbc8cc5f3d360c6fcef64015dd415d56d5792d27eee9c84964de0b2e&" alt="Photo 5">
-                <p>My Photo 5</p>
-            </div>
-            <div class="portfolio-item" onclick="openModal(this.querySelector('img').src)">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518392917461434409/DSCN1097.JPG?ex=6a39c119&is=6a386f99&hm=c2fb696c9618898196ea3edc9752143b68d0dd549f1f3bc7624e4a6a3e5b4d92&" alt="Photo 6">
-                <p>My Photo 6</p>
-            </div>
-            <div class="portfolio-item" onclick="openModal(this.querySelector('img').src)">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518137458380771358/DSCN1348.JPG?ex=6a3a24af&is=6a38d32f&hm=faaad4cf8c42064c32935c75bc775fadbbf100fb7043139a0035efcc2ed850a2&" alt="Photo 7">
-                <p>My Photo 7</p>
-            </div>
-            <div class="portfolio-item" onclick="openModal(this.querySelector('img').src)">
-                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518391193908547664/DSCN1365.JPG?ex=6a39bf7e&is=6a386dfe&hm=82aaa11d408cfd716f13dc7ae4ecbe0ffbdb692895abb84a9f8d1f74efa1f862&" alt="Photo 8">
-                <p>My Photo 8</p>
+                <img class="portfolio-img" src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394062389121024/DSCN1084.JPG?ex=6a3db6aa&is=6a3c652a&hm=3396a90b268300da2f1a1b1ff0761ab2c5f6617a8f5a64134aebd52878dbc76f&" alt="People 4">
+                <p>People</p>
+                <span>Outdoor session</span>
             </div>
         </div>
 
@@ -519,11 +516,6 @@ textarea{
             <p>Each session is designed to help people feel relaxed while getting beautiful photos.</p>
             <p>I enjoy turning everyday moments into memories that last forever.</p>
         </div>
-        <div class="long-section">
-            <h2>More About My Approach</h2>
-            <p>I like to keep things simple and enjoyable. I pay attention to lighting, background, and natural expressions so the final images feel timeless.</p>
-            <p>My editing style keeps the photos soft and polished while still looking real.</p>
-        </div>
         <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
     </div>
 
@@ -534,61 +526,20 @@ textarea{
             <div class="feature-card">
                 <h3>Portrait Sessions</h3>
                 <p>Perfect for solo pictures, senior photos, and professional profile shots.</p>
-                <p class="duration">Duration: 1 hour</p>
             </div>
             <div class="feature-card">
                 <h3>Family Photos</h3>
                 <p>Capture your family in a warm, natural, and memorable way.</p>
-                <p class="duration">Duration: 1 to 1.5 hours</p>
             </div>
             <div class="feature-card">
                 <h3>Event Coverage</h3>
                 <p>Birthdays, celebrations, and special gatherings photographed with care.</p>
-                <p class="duration">Duration: 2 to 4 hours</p>
             </div>
             <div class="feature-card">
                 <h3>Custom Shoots</h3>
                 <p>Have a special idea? I can help create a photo session that fits your vision.</p>
-                <p class="duration">Duration: Based on your project</p>
             </div>
         </div>
-
-        <div class="section-divider"></div>
-
-        <h1>Price Ranges</h1>
-        <div class="feature-grid">
-            <div class="price-card">
-                <h3>Mini Session</h3>
-                <p class="price">$50 - $100</p>
-                <p>Short session for quick portraits or simple photos.</p>
-                <p class="duration">Duration: 30 to 45 minutes</p>
-            </div>
-            <div class="price-card">
-                <h3>Standard Session</h3>
-                <p class="price">$100 - $200</p>
-                <p>Great for families, couples, or regular portrait shoots.</p>
-                <p class="duration">Duration: 1 to 1.5 hours</p>
-            </div>
-            <div class="price-card">
-                <h3>Event Package</h3>
-                <p class="price">$200 - $500</p>
-                <p>Best for birthdays, parties, and special events.</p>
-                <p class="duration">Duration: 2 to 4 hours</p>
-            </div>
-            <div class="price-card">
-                <h3>Custom Package</h3>
-                <p class="price">Contact for Quote</p>
-                <p>Flexible pricing based on your session needs.</p>
-                <p class="duration">Duration: Custom</p>
-            </div>
-        </div>
-
-        <div class="long-section">
-            <h2>Session Add-Ons</h2>
-            <p>Extra edits, extended shooting time, and additional image delivery options can be discussed when booking.</p>
-            <p>This makes it easier to customize a session based on your needs.</p>
-        </div>
-
         <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
     </div>
 
@@ -596,95 +547,31 @@ textarea{
         <h1>Testimonials</h1>
         <p class="subtitle">What clients might say about their experience.</p>
         <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <h3>Great Experience</h3>
-                <p>"The session was super comfortable and the pictures came out amazing."</p>
-            </div>
-            <div class="testimonial-card">
-                <h3>Beautiful Photos</h3>
-                <p>"Every photo looked clean, natural, and professional. I loved them all."</p>
-            </div>
-            <div class="testimonial-card">
-                <h3>Friendly and Fun</h3>
-                <p>"The whole process felt easy and enjoyable from start to finish."</p>
-            </div>
-        </div>
-        <div class="long-section">
-            <h2>Client Experience</h2>
-            <p>I want every client to feel comfortable from start to finish. A good session should feel relaxed, clear, and enjoyable.</p>
-            <p>Communication is important, so I always try to make the planning process simple and easy.</p>
+            <div class="testimonial-card"><h3>Great Experience</h3><p>"The session was super comfortable and the pictures came out amazing."</p></div>
+            <div class="testimonial-card"><h3>Beautiful Photos</h3><p>"Every photo looked clean, natural, and professional. I loved them all."</p></div>
+            <div class="testimonial-card"><h3>Friendly and Fun</h3><p>"The whole process felt easy and enjoyable from start to finish."</p></div>
         </div>
         <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
     </div>
 
     <div id="bookingSection" class="section">
         <h1>Book a Session</h1>
-        <p class="subtitle">Reserve your photography spot below.</p>
         <div class="booking-box">
             <form id="bookingForm">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="fullName" required>
-                </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" id="phoneNumber" required>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label>Session Type</label>
-                    <select id="sessionType">
-                        <option>Portrait</option>
-                        <option>Family</option>
-                        <option>Wedding</option>
-                        <option>Event</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Preferred Date</label>
-                    <input type="date" id="preferredDate">
-                </div>
-                <div class="form-group">
-                    <label>Preferred Time</label>
-                    <input type="time" id="preferredTime">
-                </div>
-                <div class="form-group">
-                    <label>Location</label>
-                    <input type="text" id="location">
-                </div>
-                <div class="form-group">
-                    <label>Notes</label>
-                    <textarea id="notes"></textarea>
-                </div>
+                <div class="form-group"><label>Full Name</label><input type="text" id="fullName" required></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" id="phoneNumber" required></div>
+                <div class="form-group"><label>Email</label><input type="email" id="email" required></div>
                 <button type="submit">Request Booking</button>
             </form>
-        </div>
-        <div class="long-section">
-            <h2>Booking Tips</h2>
-            <p>Try to book early so your preferred date is available.</p>
-            <p>Be sure to include any special ideas, locations, or requests in the notes section.</p>
-            <p>The more details shared ahead of time, the smoother the session will be.</p>
         </div>
         <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
     </div>
 
     <div id="contactSection" class="section">
         <h1>Contact Information</h1>
-        <p class="subtitle">Reach out anytime for bookings or questions.</p>
         <div class="contact-box">
             <p>Email: <a href="mailto:tsheehan1213@gmail.com">tsheehan1213@gmail.com</a></p>
             <p>Phone: <a href="tel:+17273554104">(727) 355-4104</a></p>
-            <p>Instagram: @tylaphotography</p>
-            <p>Available for portraits, family photos, and events.</p>
-        </div>
-        <div class="long-section">
-            <h2>Let’s Work Together</h2>
-            <p>If you’re looking for clean, warm, and memorable photos, feel free to reach out anytime.</p>
-            <p>I’d love to help capture your next special moment.</p>
         </div>
         <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
     </div>
@@ -717,36 +604,8 @@ function closeModal() {
 }
 
 document.querySelector('.modal-close').addEventListener('click', closeModal);
-
 document.getElementById('imageModal').addEventListener('click', function(e) {
     if (e.target === this) closeModal();
-});
-
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const fullName = document.getElementById('fullName').value;
-    const phoneNumber = document.getElementById('phoneNumber').value;
-    const email = document.getElementById('email').value;
-    const sessionType = document.getElementById('sessionType').value;
-    const preferredDate = document.getElementById('preferredDate').value;
-    const preferredTime = document.getElementById('preferredTime').value;
-    const location = document.getElementById('location').value;
-    const notes = document.getElementById('notes').value;
-
-    const subject = encodeURIComponent('New Booking Request');
-    const body = encodeURIComponent(
-        `Name: ${fullName}\n` +
-        `Phone: ${phoneNumber}\n` +
-        `Email: ${email}\n` +
-        `Session Type: ${sessionType}\n` +
-        `Preferred Date: ${preferredDate}\n` +
-        `Preferred Time: ${preferredTime}\n` +
-        `Location: ${location}\n` +
-        `Notes: ${notes}`
-    );
-
-    window.location.href = `mailto:tsheehan1213@gmail.com?subject=${subject}&body=${body}`;
 });
 
 showSection('homeSection');
