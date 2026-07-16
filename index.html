@@ -19,6 +19,18 @@
   --radius:24px;
 }
 
+body.light{
+  --bg:#f4f5f9;
+  --surface:rgba(255,255,255,.92);
+  --surface-2:rgba(255,255,255,.78);
+  --text:#1f2937;
+  --muted:#6b7280;
+  --primary:#d97fb0;
+  --primary-dark:#c86ba0;
+  --border:rgba(0,0,0,.08);
+  --shadow:0 18px 45px rgba(0,0,0,.12);
+}
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -39,6 +51,13 @@ body{
     linear-gradient(135deg, #020617 0%, #0f172a 45%, #111827 100%);
   background-attachment:fixed;
   overflow-x:hidden;
+}
+
+body.light{
+  background:
+    radial-gradient(circle at top left, rgba(201,111,154,.12), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(99,102,241,.08), transparent 24%),
+    linear-gradient(135deg, #f8f9fc 0%, #f3f4f8 45%, #eef2f7 100%);
 }
 
 body::before,
@@ -67,6 +86,14 @@ body::after{
   background:radial-gradient(circle, rgba(59,130,246,.14), transparent 72%);
 }
 
+body.light::before{
+  background:radial-gradient(circle, rgba(201,111,154,.16), transparent 70%);
+}
+
+body.light::after{
+  background:radial-gradient(circle, rgba(99,102,241,.12), transparent 72%);
+}
+
 a{
   color:inherit;
   text-decoration:none;
@@ -93,10 +120,22 @@ a{
   gap:16px;
 }
 
+body.light .navbar{
+  background:rgba(255,255,255,.78);
+}
+
 .brand{
   font-weight:700;
   letter-spacing:.2px;
   font-size:1.05rem;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
 }
 
 .nav-links{
@@ -118,6 +157,28 @@ a{
   color:#fff;
 }
 
+body.light .nav-links a:hover{
+  background:rgba(201,111,154,.10);
+  color:var(--primary-dark);
+}
+
+.theme-toggle{
+  border:none;
+  border-radius:999px;
+  padding:10px 14px;
+  font-weight:600;
+  cursor:pointer;
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  transition:.2s ease;
+}
+
+body.light .theme-toggle{
+  background:#fff;
+  color:var(--text);
+  border:1px solid var(--border);
+}
+
 .hero{
   margin-top:22px;
   background:rgba(15,23,42,.72);
@@ -131,6 +192,11 @@ a{
   grid-template-columns:1.05fr .95fr;
   gap:26px;
   align-items:center;
+}
+
+body.light .hero,
+body.light .section{
+  background:rgba(255,255,255,.82);
 }
 
 .hero-copy h1{
@@ -180,8 +246,18 @@ a{
   color:#fff;
 }
 
+body.light .btn-secondary{
+  background:#fff;
+  color:var(--text);
+}
+
 .btn-secondary:hover{
   border-color:rgba(255,255,255,.24);
+}
+
+body.light .btn-secondary:hover{
+  border-color:var(--primary);
+  color:var(--primary-dark);
 }
 
 .hero-image{
@@ -263,28 +339,20 @@ a{
   padding:20px;
 }
 
-.card-body h3{
+.card-body h3,
+.feature h3{
   margin-bottom:8px;
   color:#f9a8d4;
 }
 
-.card-body p{
+.card-body p,
+.feature p{
   color:var(--muted);
   line-height:1.7;
 }
 
 .feature{
   padding:22px;
-}
-
-.feature h3{
-  margin-bottom:10px;
-  color:#f9a8d4;
-}
-
-.feature p{
-  color:var(--muted);
-  line-height:1.7;
 }
 
 .portfolio-grid{
@@ -320,6 +388,10 @@ a{
   background:rgba(255,255,255,.06);
 }
 
+body.light .contact-item{
+  background:rgba(255,255,255,.88);
+}
+
 .contact-item span{
   display:block;
   color:var(--muted);
@@ -330,6 +402,10 @@ a{
 .contact-item a{
   color:#f9a8d4;
   font-weight:600;
+}
+
+body.light .contact-item a{
+  color:var(--primary-dark);
 }
 
 .modal{
@@ -389,6 +465,7 @@ a{
     align-items:flex-start;
   }
 
+  .nav-right,
   .nav-links{
     justify-content:flex-start;
   }
@@ -407,7 +484,8 @@ a{
     height:200px;
   }
 
-  .btn{
+  .btn,
+  .theme-toggle{
     width:100%;
   }
 
@@ -422,13 +500,16 @@ a{
 
   <nav class="navbar">
     <div class="brand">Tyla Photography</div>
-    <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#contact">Contact</a>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">Light Mode</button>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
   </nav>
 
@@ -556,6 +637,13 @@ function openModal(src){
 
 function closeModal(){
   document.getElementById('imageModal').style.display = 'none';
+}
+
+function toggleTheme(){
+  const body = document.body;
+  const btn = document.getElementById('themeToggle');
+  body.classList.toggle('light');
+  btn.textContent = body.classList.contains('light') ? 'Dark Mode' : 'Light Mode';
 }
 
 document.querySelector('.modal-close').addEventListener('click', closeModal);
