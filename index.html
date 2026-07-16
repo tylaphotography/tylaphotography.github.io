@@ -4,488 +4,565 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tyla Photography</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+:root{
+  --bg:#f4f5f9;
+  --surface:rgba(255,255,255,.92);
+  --surface-2:rgba(255,255,255,.78);
+  --text:#1f2937;
+  --muted:#6b7280;
+  --primary:#d97fb0;
+  --primary-dark:#c86ba0;
+  --border:rgba(0,0,0,.08);
+  --shadow:0 18px 45px rgba(0,0,0,.12);
+  --radius:24px;
+}
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:'Poppins',sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-    min-height:100vh;
-    padding:30px;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.85) 0 2px, transparent 3px),
-        radial-gradient(circle at 80% 25%, rgba(255,255,255,.7) 0 2px, transparent 3px),
-        radial-gradient(circle at 35% 75%, rgba(255,255,255,.75) 0 2px, transparent 3px),
-        linear-gradient(135deg, #ffd9e8 0%, #ffeef6 40%, #f7d7ff 100%);
-    background-size: 160px 160px, 200px 200px, 180px 180px, cover;
-    position:relative;
-    overflow-x:hidden;
+  min-height:100vh;
+  color:var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(201,111,154,.12), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(99,102,241,.08), transparent 24%),
+    linear-gradient(135deg, #f8f9fc 0%, #f3f4f8 45%, #eef2f7 100%);
+  background-attachment:fixed;
+  overflow-x:hidden;
 }
 
 body::before,
 body::after{
-    content:"";
-    position:fixed;
-    width:280px;
-    height:280px;
-    border-radius:50%;
-    background:
-        radial-gradient(circle at center, #ffb6c1 0 18px, transparent 18px),
-        radial-gradient(circle at center, rgba(255,182,193,.35) 0 44px, transparent 45px),
-        radial-gradient(circle at 35% 35%, #fff 0 4px, transparent 5px);
-    opacity:.55;
-    filter:blur(.3px);
-    pointer-events:none;
-    z-index:0;
+  content:"";
+  position:fixed;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:-1;
+  filter:blur(28px);
 }
 
 body::before{
-    top:-70px;
-    left:-70px;
+  width:320px;
+  height:320px;
+  top:-90px;
+  right:-120px;
+  background:radial-gradient(circle, rgba(201,111,154,.16), transparent 70%);
 }
 
 body::after{
-    bottom:-80px;
-    right:-80px;
+  width:360px;
+  height:360px;
+  left:-120px;
+  bottom:-120px;
+  background:radial-gradient(circle, rgba(99,102,241,.12), transparent 72%);
 }
 
-.container{
-    position:relative;
-    z-index:1;
-    width:100%;
-    max-width:1200px;
-    margin:0 auto;
-    background:rgba(255,255,255,.92);
-    backdrop-filter:blur(8px);
-    padding:40px;
-    border-radius:25px;
-    box-shadow:0 15px 40px rgba(0,0,0,.12);
-    border:1px solid rgba(255,182,193,.35);
+a{
+  color:inherit;
+  text-decoration:none;
 }
 
-h1{
-    text-align:center;
-    color:#8b4f7a;
-    margin-bottom:10px;
-    font-size:clamp(1.6rem, 4vw, 2.4rem);
+.page{
+  width:min(1200px, calc(100% - 32px));
+  margin:18px auto;
 }
 
-.subtitle{
-    text-align:center;
-    color:#6f5b67;
-    margin-bottom:30px;
-    font-size:clamp(.95rem, 2.5vw, 1rem);
+.navbar{
+  position:sticky;
+  top:14px;
+  z-index:100;
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.75);
+  box-shadow:var(--shadow);
+  border-radius:999px;
+  padding:14px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
 }
 
-.hero-grid,
-.feature-grid,
-.testimonial-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:16px;
-    margin-top:20px;
+.brand{
+  font-weight:700;
+  letter-spacing:.2px;
+  font-size:1.05rem;
 }
 
-.hero-card,
-.feature-card,
-.testimonial-card,
-.price-card{
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 10px 25px rgba(0,0,0,.12);
-    background:#fff7fb;
-    border:1px solid #f3c5da;
+.nav-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:flex-end;
 }
 
-.hero-card{
-    position:relative;
+.nav-links a{
+  color:var(--muted);
+  padding:10px 14px;
+  border-radius:999px;
+  transition:.2s ease;
 }
 
-.hero-card img,
-.portfolio-img{
-    width:100%;
-    height:260px;
-    object-fit:cover;
-    display:block;
+.nav-links a:hover{
+  background:rgba(201,111,154,.10);
+  color:var(--primary-dark);
 }
 
-.hero-overlay{
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:0;
-    background:linear-gradient(to top, rgba(120,45,86,.75), transparent);
-    color:white;
-    padding:18px;
-    font-weight:600;
+.hero{
+  margin-top:22px;
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:calc(var(--radius) + 6px);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  padding:32px;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:26px;
+  align-items:center;
 }
 
-.feature-card,
-.testimonial-card,
-.price-card{
-    padding:22px;
+.hero-copy h1{
+  font-size:clamp(2rem, 5vw, 4rem);
+  line-height:1.05;
+  margin-bottom:14px;
 }
 
-.feature-card h3,
-.testimonial-card h3,
-.price-card h3{
-    color:#8b4f7a;
-    margin-bottom:10px;
+.hero-copy p{
+  color:var(--muted);
+  line-height:1.75;
+  max-width:55ch;
+  margin-bottom:22px;
 }
 
-.price{
-    font-size:1.5rem;
-    font-weight:700;
-    color:#d66aa2;
-    margin:10px 0;
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
 }
 
-.duration{
-    font-weight:600;
-    color:#8b4f7a;
-    margin-top:8px;
-}
-
-.feature-card p,
-.testimonial-card p,
-.about-box p,
-.contact-box p,
-.booking-box p,
-.price-card p,
-.comment-list p{
-    color:#5e4b56;
-    line-height:1.7;
-    margin:10px 0;
-}
-
-.actions{
-    display:flex;
-    gap:15px;
-    justify-content:center;
-    flex-wrap:wrap;
-    margin:30px 0 10px;
-}
-
-button,
 .btn{
-    padding:14px 24px;
-    border:none;
-    border-radius:50px;
-    background:linear-gradient(45deg,#d97fb0,#ffb3cc);
-    color:white;
-    font-size:1rem;
-    font-weight:bold;
-    cursor:pointer;
-    text-decoration:none;
-    display:inline-block;
-    text-align:center;
-    box-shadow:0 8px 18px rgba(170,90,130,.2);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 20px;
+  border-radius:999px;
+  font-weight:600;
+  border:1px solid transparent;
+  transition:.2s ease;
+  cursor:pointer;
 }
 
-button:hover,
-.btn:hover{
-    opacity:.92;
+.btn-primary{
+  background:var(--primary);
+  color:#fff;
+  box-shadow:0 10px 22px rgba(217,111,154,.18);
+}
+
+.btn-primary:hover{
+  background:var(--primary-dark);
+  transform:translateY(-1px);
+}
+
+.btn-secondary{
+  background:#fff;
+  border-color:var(--border);
+  color:var(--text);
+}
+
+.btn-secondary:hover{
+  border-color:var(--primary);
+  color:var(--primary-dark);
+}
+
+.hero-image{
+  position:relative;
+  min-height:420px;
+  border-radius:28px;
+  overflow:hidden;
+  background:#ddd;
+  box-shadow:0 18px 35px rgba(0,0,0,.08);
+}
+
+.hero-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.hero-badge{
+  position:absolute;
+  left:18px;
+  bottom:18px;
+  background:rgba(17,24,39,.72);
+  color:#fff;
+  padding:12px 16px;
+  border-radius:999px;
+  font-size:.95rem;
+  backdrop-filter:blur(10px);
 }
 
 .section{
-    display:none;
-    margin-top:35px;
+  margin-top:28px;
+  background:rgba(255,255,255,.82);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.8);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:28px;
 }
 
-.portfolio-basic{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:14px;
-    margin-top:20px;
+.section-header{
+  text-align:center;
+  margin-bottom:22px;
 }
 
-.portfolio-basic img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-    border-radius:16px;
-    cursor:pointer;
-    box-shadow:0 8px 20px rgba(0,0,0,.12);
-    transition:transform .2s ease;
+.section-header h2{
+  font-size:clamp(1.6rem, 3vw, 2.3rem);
+  margin-bottom:8px;
 }
 
-.portfolio-basic img:hover{
-    transform:scale(1.02);
+.section-header p{
+  color:var(--muted);
+  line-height:1.7;
 }
 
-.about-box,
-.contact-box,
-.booking-box,
-.comment-box{
-    margin-top:20px;
-    padding:22px;
-    border:1px solid #f3c5da;
-    border-radius:18px;
-    background:#fff7fb;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:18px;
 }
 
-.form-group{
-    margin-bottom:20px;
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
 }
 
-label{
-    display:block;
-    margin-bottom:8px;
-    font-weight:600;
-    text-align:left;
-    color:#5e4b56;
+.card img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  display:block;
 }
 
-input,
-select,
-textarea{
-    width:100%;
-    padding:14px;
-    border:2px solid #f3c5da;
-    border-radius:12px;
-    font-size:1rem;
-    background:#fffafc;
+.card-body{
+  padding:20px;
 }
 
-textarea{
-    resize:vertical;
-    min-height:120px;
+.card-body h3{
+  margin-bottom:8px;
+  color:var(--primary-dark);
 }
 
-.back{
-    display:block;
-    text-align:center;
-    margin-top:20px;
-    text-decoration:none;
-    color:#8b4f7a;
+.card-body p{
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.feature{
+  padding:22px;
+}
+
+.feature h3{
+  margin-bottom:10px;
+  color:var(--primary-dark);
+}
+
+.feature p{
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.portfolio-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+  gap:16px;
+}
+
+.portfolio-grid img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:18px;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  transition:transform .2s ease;
+}
+
+.portfolio-grid img:hover{
+  transform:scale(1.02);
+}
+
+.contact-list{
+  display:grid;
+  gap:14px;
+  margin-top:10px;
+}
+
+.contact-item{
+  padding:18px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:rgba(255,255,255,.88);
+}
+
+.contact-item span{
+  display:block;
+  color:var(--muted);
+  margin-bottom:6px;
+  font-size:.95rem;
+}
+
+.contact-item a{
+  color:var(--primary-dark);
+  font-weight:600;
 }
 
 .modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(60,20,40,.88);
-    z-index:9999;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  z-index:9999;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
 
 .modal img{
-    max-width:95vw;
-    max-height:90vh;
-    border-radius:16px;
-    box-shadow:0 20px 50px rgba(0,0,0,.4);
+  max-width:min(95vw, 1100px);
+  max-height:90vh;
+  border-radius:18px;
+  box-shadow:0 20px 50px rgba(0,0,0,.4);
 }
 
 .modal-close{
-    position:absolute;
-    top:20px;
-    right:25px;
-    font-size:40px;
-    color:white;
-    cursor:pointer;
-    line-height:1;
+  position:absolute;
+  top:18px;
+  right:22px;
+  color:#fff;
+  font-size:42px;
+  line-height:1;
+  cursor:pointer;
 }
 
-@media (max-width: 768px){
-    body{ padding:16px; }
-    .container{
-        padding:22px;
-        border-radius:18px;
-    }
-    .hero-grid,
-    .feature-grid,
-    .testimonial-grid,
-    .portfolio-basic{
-        grid-template-columns:1fr;
-    }
-    .actions{ gap:10px; }
-    .btn, button{
-        width:100%;
-        max-width:320px;
-    }
-    .hero-card img,
-    .portfolio-basic img{
-        height:220px;
-    }
-    .feature-card,
-    .testimonial-card,
-    .price-card,
-    .about-box,
-    .contact-box,
-    .booking-box,
-    .comment-box{
-        padding:18px;
-    }
+.footer{
+  text-align:center;
+  color:var(--muted);
+  padding:24px 0 8px;
+  font-size:.95rem;
 }
 
-@media (max-width: 480px){
-    body{ padding:10px; }
-    .container{ padding:16px; }
-    .hero-card img,
-    .portfolio-basic img{
-        height:190px;
-    }
-    .hero-overlay{
-        padding:14px;
-        font-size:.95rem;
-    }
-    .modal{ padding:10px; }
-    .modal-close{
-        top:12px;
-        right:16px;
-        font-size:34px;
-    }
+@media (max-width: 900px){
+  .hero{
+    grid-template-columns:1fr;
+  }
+  .hero-image{
+    min-height:340px;
+  }
+}
+
+@media (max-width: 640px){
+  .page{
+    width:min(100% - 20px, 1200px);
+    margin:10px auto;
+  }
+
+  .navbar{
+    border-radius:24px;
+    padding:14px;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .nav-links{
+    justify-content:flex-start;
+  }
+
+  .hero,
+  .section{
+    padding:18px;
+  }
+
+  .hero-image{
+    min-height:260px;
+  }
+
+  .card img,
+  .portfolio-grid img{
+    height:200px;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+  }
 }
 </style>
 </head>
-
 <body>
+<div class="page">
 
-<div class="container">
-    <h1>Tyla Photography</h1>
-    <p class="subtitle">Capturing your special moments with style and warmth.</p>
+  <nav class="navbar">
+    <div class="brand">Tyla Photography</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-    <div id="homeSection">
-        <div class="hero-grid">
-            <div class="hero-card">
-                <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518490056288108594/DSCN1362.JPG?ex=6a3a1b91&is=6a38ca11&hm=6095e7ea15edd1738f4d0db885078f727670df83f1cfd262d87e52d88efc9138&" alt="Photo 1">
-                <div class="hero-overlay">Portrait Moments</div>
-            </div>
-            <div class="hero-card">
-                <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518489914021515374/DSCN1388.JPG?ex=6a3a1b6f&is=6a38c9ef&hm=1c2abf482f1db384be62486b31a7a2ea728b980128fb9ad74e7c15fe91556655&" alt="Photo 2">
-                <div class="hero-overlay">Creative Shots</div>
-            </div>
-            <div class="hero-card">
-                <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518489676208672849/DSCN1358.JPG?ex=6a3a1b36&is=6a38c9b6&hm=c3c49946bb404214891b3e068d71e469cf76e9bf5f09bb2853a3dc7e6c0e403a&" alt="Photo 3">
-                <div class="hero-overlay">Natural Light</div>
-            </div>
-            <div class="hero-card">
-                <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518499868648275988/content.png?ex=6a3a24b5&is=6a38d335&hm=336fd2a3b8391899e32f3f9050fcd4209ba39d8b0fc9104bb58cea662eaa62a3&" alt="Photo 4">
-                <div class="hero-overlay">Featured Image</div>
-            </div>
-        </div>
-
-        <div class="actions">
-            <a href="#" class="btn" onclick="showSection('portfolioSection'); return false;">View Portfolio</a>
-            <a href="#" class="btn" onclick="showSection('aboutSection'); return false;">About Me</a>
-            <a href="#" class="btn" onclick="showSection('servicesSection'); return false;">Services</a>
-            <a href="#" class="btn" onclick="showSection('testimonialsSection'); return false;">Testimonials</a>
-            <a href="#" class="btn" onclick="showSection('contactSection'); return false;">Contact Me</a>
-        </div>
+  <section class="hero" id="home">
+    <div class="hero-copy">
+      <h1>Clean, timeless photography for your special moments.</h1>
+      <p>
+        Capturing portraits, family memories, events, and creative sessions with a soft, modern style.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#portfolio">View Portfolio</a>
+        <a class="btn btn-secondary" href="#contact">Book / Contact</a>
+      </div>
     </div>
 
-    <div id="portfolioSection" class="section">
-        <h1>Portfolio</h1>
-        <p class="subtitle">Click any picture to view it larger.</p>
+    <div class="hero-image">
+      <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518499868648275988/content.png?ex=6a3a24b5&is=6a38d335&hm=336fd2a3b8391899e32f3f9050fcd4209ba39d8b0fc9104bb58cea662eaa62a3&" alt="Featured photo">
+      <div class="hero-badge">Photography that feels natural and refined</div>
+    </div>
+  </section>
 
-        <div class="portfolio-basic">
-            <img src="https://cdn.discordapp.com/attachments/1418770197032079403/1519601190797578301/866B6D2B-BB96-447B-A23E-530BEC70125F.jpg?ex=6a3e2664&is=6a3cd4e4&hm=9a6a38a52fac8f8e824c20c574df577640bb63dcb35007267c16fda827e15b97&" alt="Portfolio 1" onclick="openModal(this.src)">
-            <img src="https://cdn.discordapp.com/attachments/1418770197032079403/1519601252445716580/A6CDBF10-7F11-4A4A-BDAA-F48EB7666BD5.jpg?ex=6a3e2673&is=6a3cd4f3&hm=5d24b38ae0325031a287507eb676f4936c4cedc6521074f6037b4e2897ade7b7&" alt="Portfolio 2" onclick="openModal(this.src)">
-            <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518490056288108594/DSCN1362.JPG?ex=6a3e1011&is=6a3cbe91&hm=c804ebeefad266f8dedf07a9723c89f1d364d971baa5bc477ad4fa1c873b420f&" alt="Portfolio 3" onclick="openModal(this.src)">
-            <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394062389121024/DSCN1084.JPG?ex=6a3db6aa&is=6a3c652a&hm=3396a90b268300da2f1a1b1ff0761ab2c5f6617a8f5a64134aebd52878dbc76f&" alt="Portfolio 4" onclick="openModal(this.src)">
-        </div>
-
-        <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
+  <section class="section" id="portfolio">
+    <div class="section-header">
+      <h2>Portfolio</h2>
+      <p>Click any image to view it larger.</p>
     </div>
 
-    <div id="aboutSection" class="section">
-        <h1>About Me</h1>
-        <p class="subtitle">A little bit about Tyla Photography.</p>
-        <div class="about-box">
-            <p>Hi, I’m Tyla. I love capturing natural moments, special memories, and beautiful stories through photography.</p>
-            <p>My goal is to make every session feel comfortable, creative, and fun.</p>
-            <p>I work with portraits, family sessions, events, and special occasions.</p>
-            <p>Each session is designed to help people feel relaxed while getting beautiful photos.</p>
-            <p>I enjoy turning everyday moments into memories that last forever.</p>
-        </div>
-        <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
+    <div class="portfolio-grid">
+      <img src="https://cdn.discordapp.com/attachments/1418770197032079403/1519601190797578301/866B6D2B-BB96-447B-A23E-530BEC70125F.jpg?ex=6a3e2664&is=6a3cd4e4&hm=9a6a38a52fac8f8e824c20c574df577640bb63dcb35007267c16fda827e15b97&" alt="Portfolio 1" onclick="openModal(this.src)">
+      <img src="https://cdn.discordapp.com/attachments/1418770197032079403/1519601252445716580/A6CDBF10-7F11-4A4A-BDAA-F48EB7666BD5.jpg?ex=6a3e2673&is=6a3cd4f3&hm=5d24b38ae0325031a287507eb676f4936c4cedc6521074f6037b4e2897ade7b7&" alt="Portfolio 2" onclick="openModal(this.src)">
+      <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518490056288108594/DSCN1362.JPG?ex=6a3e1011&is=6a3cbe91&hm=c804ebeefad266f8dedf07a9723c89f1d364d971baa5bc477ad4fa1c873b420f&" alt="Portfolio 3" onclick="openModal(this.src)">
+      <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1518394062389121024/DSCN1084.JPG?ex=6a3db6aa&is=6a3c652a&hm=3396a90b268300da2f1a1b1ff0761ab2c5f6617a8f5a64134aebd52878dbc76f&" alt="Portfolio 4" onclick="openModal(this.src)">
     </div>
+  </section>
 
-    <div id="servicesSection" class="section">
-        <h1>Services</h1>
-        <p class="subtitle">Photography services I offer.</p>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>Portrait Sessions</h3>
-                <p>Perfect for solo pictures, senior photos, and professional profile shots.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Family Photos</h3>
-                <p>Capture your family in a warm, natural, and memorable way.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Event Coverage</h3>
-                <p>Birthdays, celebrations, and special gatherings photographed with care.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Custom Shoots</h3>
-                <p>Have a special idea? I can help create a photo session that fits your vision.</p>
-            </div>
-        </div>
-        <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
+  <section class="section" id="about">
+    <div class="section-header">
+      <h2>About Me</h2>
+      <p>A little bit about Tyla Photography.</p>
     </div>
+    <div class="card feature">
+      <p>Hi, I’m Tyla. I love capturing natural moments, special memories, and beautiful stories through photography.</p>
+      <p>My goal is to make every session feel comfortable, creative, and fun.</p>
+      <p>I work with portraits, family sessions, events, and special occasions.</p>
+      <p>I enjoy turning everyday moments into memories that last forever.</p>
+    </div>
+  </section>
 
-    <div id="testimonialsSection" class="section">
-        <h1>Testimonials</h1>
-        <p class="subtitle">What clients might say about their experience.</p>
-        <div class="testimonial-grid">
-            <div class="testimonial-card"><h3>Great Experience</h3><p>"The session was super comfortable and the pictures came out amazing."</p></div>
-            <div class="testimonial-card"><h3>Beautiful Photos</h3><p>"Every photo looked clean, natural, and professional. I loved them all."</p></div>
-            <div class="testimonial-card"><h3>Friendly and Fun</h3><p>"The whole process felt easy and enjoyable from start to finish."</p></div>
-        </div>
-        <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
+  <section class="section" id="services">
+    <div class="section-header">
+      <h2>Services</h2>
+      <p>Photography services I offer.</p>
     </div>
+    <div class="grid">
+      <div class="card feature">
+        <h3>Portrait Sessions</h3>
+        <p>Perfect for solo pictures, senior photos, and professional profile shots.</p>
+      </div>
+      <div class="card feature">
+        <h3>Family Photos</h3>
+        <p>Capture your family in a warm, natural, and memorable way.</p>
+      </div>
+      <div class="card feature">
+        <h3>Event Coverage</h3>
+        <p>Birthdays, celebrations, and special gatherings photographed with care.</p>
+      </div>
+      <div class="card feature">
+        <h3>Custom Shoots</h3>
+        <p>Have a special idea? I can help create a photo session that fits your vision.</p>
+      </div>
+    </div>
+  </section>
 
-    <div id="contactSection" class="section">
-        <h1>Contact Information</h1>
-        <div class="contact-box">
-            <p>Email: <a href="mailto:tsheehan1213@gmail.com">tsheehan1213@gmail.com</a></p>
-            <p>Phone: <a href="tel:+17273554104">(727) 355-4104</a></p>
-        </div>
-        <a href="#" class="back" onclick="showSection('homeSection'); return false;">← Back</a>
+  <section class="section" id="testimonials">
+    <div class="section-header">
+      <h2>Testimonials</h2>
+      <p>What clients might say about their experience.</p>
     </div>
+    <div class="grid">
+      <div class="card card-body">
+        <h3>Great Experience</h3>
+        <p>"The session was super comfortable and the pictures came out amazing."</p>
+      </div>
+      <div class="card card-body">
+        <h3>Beautiful Photos</h3>
+        <p>"Every photo looked clean, natural, and professional. I loved them all."</p>
+      </div>
+      <div class="card card-body">
+        <h3>Friendly and Fun</h3>
+        <p>"The whole process felt easy and enjoyable from start to finish."</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-header">
+      <h2>Contact</h2>
+      <p>Reach out to book a session or ask a question.</p>
+    </div>
+    <div class="contact-list">
+      <div class="contact-item">
+        <span>Email</span>
+        <a href="mailto:tsheehan1213@gmail.com">tsheehan1213@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span>Phone</span>
+        <a href="tel:+17273554104">(727) 355-4104</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">Tyla Photography</div>
 </div>
 
 <div class="modal" id="imageModal" onclick="closeModal()">
-    <span class="modal-close">&times;</span>
-    <img id="modalImage" alt="Expanded photo">
+  <span class="modal-close">&times;</span>
+  <img id="modalImage" alt="Expanded photo">
 </div>
 
 <script>
-function showSection(sectionId) {
-    document.getElementById('homeSection').style.display = 'none';
-    document.getElementById('portfolioSection').style.display = 'none';
-    document.getElementById('aboutSection').style.display = 'none';
-    document.getElementById('servicesSection').style.display = 'none';
-    document.getElementById('testimonialsSection').style.display = 'none';
-    document.getElementById('contactSection').style.display = 'none';
-    document.getElementById(sectionId).style.display = 'block';
+function openModal(src){
+  document.getElementById('modalImage').src = src;
+  document.getElementById('imageModal').style.display = 'flex';
 }
 
-function openModal(src) {
-    document.getElementById('modalImage').src = src;
-    document.getElementById('imageModal').style.display = 'flex';
-}
-
-function closeModal() {
-    document.getElementById('imageModal').style.display = 'none';
+function closeModal(){
+  document.getElementById('imageModal').style.display = 'none';
 }
 
 document.querySelector('.modal-close').addEventListener('click', closeModal);
-document.getElementById('imageModal').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
+document.getElementById('imageModal').addEventListener('click', function(e){
+  if(e.target === this) closeModal();
 });
-
-showSection('homeSection');
 </script>
-
 </body>
 </html>
