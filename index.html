@@ -162,21 +162,36 @@ body.light .nav-links a:hover{
   color:var(--primary-dark);
 }
 
-.theme-toggle{
+.theme-toggle,
+.policy-btn{
   border:none;
   border-radius:999px;
   padding:10px 14px;
   font-weight:600;
   cursor:pointer;
+  transition:.2s ease;
+}
+
+.theme-toggle{
   background:rgba(255,255,255,.08);
   color:#fff;
-  transition:.2s ease;
 }
 
 body.light .theme-toggle{
   background:#fff;
   color:var(--text);
   border:1px solid var(--border);
+}
+
+.policy-btn{
+  background:linear-gradient(135deg, var(--primary), #8b5cf6);
+  color:#fff;
+  box-shadow:0 10px 22px rgba(244,114,182,.16);
+}
+
+.policy-btn:hover,
+.theme-toggle:hover{
+  transform:translateY(-1px);
 }
 
 .hero{
@@ -485,7 +500,8 @@ body.light .contact-item a{
   }
 
   .btn,
-  .theme-toggle{
+  .theme-toggle,
+  .policy-btn{
     width:100%;
   }
 
@@ -502,6 +518,7 @@ body.light .contact-item a{
     <div class="brand">Tyla Photography</div>
     <div class="nav-right">
       <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">Light Mode</button>
+      <a class="policy-btn" href="policy.html">Policy</a>
       <div class="nav-links">
         <a href="#home">Home</a>
         <a href="#portfolio">Portfolio</a>
