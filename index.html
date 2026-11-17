@@ -347,8 +347,146 @@ body.light .btn-secondary:hover{
   transition:transform .2s ease;
 }
 
-.portfolio-grid img:hover{
+ .portfolio-grid img:hover{
   transform:scale(1.02);
+}
+
+.comparison-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:18px;
+}
+
+.comparison-card{
+  overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:var(--surface);
+  box-shadow:var(--shadow);
+}
+
+.comparison-image{
+  --position:50%;
+  position:relative;
+  aspect-ratio:4 / 3;
+  overflow:hidden;
+  background:#1e293b;
+}
+
+.comparison-image > img,
+.comparison-before img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.comparison-before{
+  position:absolute;
+  inset:0;
+  clip-path:inset(0 calc(100% - var(--position)) 0 0);
+}
+
+.comparison-before img{
+  filter:grayscale(.45) sepia(.18) brightness(.78) contrast(.88);
+}
+
+.comparison-divider{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:var(--position);
+  width:2px;
+  background:#fff;
+  transform:translateX(-50%);
+  pointer-events:none;
+  box-shadow:0 0 8px rgba(0,0,0,.45);
+}
+
+.comparison-divider::after{
+  content:"↔";
+  position:absolute;
+  top:50%;
+  left:50%;
+  display:grid;
+  place-items:center;
+  width:38px;
+  height:38px;
+  border:2px solid #fff;
+  border-radius:50%;
+  background:var(--primary-dark);
+  color:#fff;
+  font-size:20px;
+  transform:translate(-50%,-50%);
+}
+
+.comparison-label{
+  position:absolute;
+  top:12px;
+  z-index:1;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(15,23,42,.72);
+  color:#fff;
+  font-size:.8rem;
+  font-weight:600;
+  pointer-events:none;
+}
+
+.comparison-label.before{left:12px;}
+.comparison-label.after{right:12px;}
+
+.comparison-slider{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  width:100%;
+  height:100%;
+  margin:0;
+  opacity:0;
+  cursor:ew-resize;
+}
+
+.comparison-slider:focus-visible{
+  opacity:.08;
+  outline:3px solid var(--primary);
+  outline-offset:-3px;
+}
+
+.comparison-caption{
+  padding:14px 18px;
+  color:var(--muted);
+  font-size:.95rem;
+}
+
+
+.about-glance{
+  display:grid;
+  grid-template-columns:minmax(220px, .8fr) 1.2fr;
+  gap:24px;
+  align-items:center;
+}
+
+.about-glance img{
+  display:block;
+  width:100%;
+  max-height:420px;
+  object-fit:cover;
+  object-position:center 35%;
+  border-radius:18px;
+  box-shadow:var(--shadow);
+}
+
+.about-glance h3{
+  margin-bottom:12px;
+  color:#f9a8d4;
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;
+}
+
+.about-glance-copy p + p{
+  margin-top:12px;
 }
 
 .contact-list{
@@ -520,6 +658,14 @@ body.light .contact-item a{
     padding:18px;
   }
 
+  .about-glance{
+    grid-template-columns:1fr;
+  }
+
+  .about-glance img{
+    max-height:360px;
+  }
+
   .contact-item{
     padding:16px;
   }
@@ -541,6 +687,7 @@ body.light .contact-item a{
       <div class="nav-links">
         <a href="#home">Home</a>
         <a href="#portfolio">Portfolio</a>
+        <a href="#before-after">Before &amp; After</a>
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#testimonials">Testimonials</a>
@@ -576,16 +723,84 @@ body.light .contact-item a{
     </div>
   </section>
 
+  <section class="section" id="before-after">
+    <div class="section-header">
+      <h2>Before &amp; After</h2>
+      <p>Drag each slider to see how editing brings out the color and light.</p>
+    </div>
+    <div class="comparison-grid">
+      <div class="comparison-card">
+        <div class="comparison-image">
+          <img src="https://cdn.discordapp.com/attachments/1360840245146554408/1527454078748065872/DSCN1362.JPG?ex=6a5ab7f7&is=6a596677&hm=9c2cc650e141b4b39edd0677cd59b1f8e419eef64b9b387b68bb9be525749e99&=&format=webp&width=1240&height=930" alt="Edited portrait">
+          <div class="comparison-before"><img src="https://cdn.discordapp.com/attachments/1360840245146554408/1527454078748065872/DSCN1362.JPG?ex=6a5ab7f7&is=6a596677&hm=9c2cc650e141b4b39edd0677cd59b1f8e419eef64b9b387b68bb9be525749e99&=&format=webp&width=1240&height=930" alt=""></div>
+          <span class="comparison-label before">Before</span>
+          <span class="comparison-label after">After</span>
+          <div class="comparison-divider"></div>
+          <input class="comparison-slider" type="range" min="0" max="100" value="50" aria-label="Compare before and after editing for photo one">
+        </div>
+        <p class="comparison-caption">Color and light refinement</p>
+      </div>
+      <div class="comparison-card">
+        <div class="comparison-image">
+          <img src="https://cdn.discordapp.com/attachments/1360840245146554408/1527454338979594260/DSCN1084.JPG?ex=6a5ab835&is=6a5966b5&hm=22f9ca58a387e7b057535d89d2ede9be8897f46a9697975670a2f68e11072f72&=&format=webp&width=743&height=990" alt="Edited portrait">
+          <div class="comparison-before"><img src="https://cdn.discordapp.com/attachments/1360840245146554408/1527454338979594260/DSCN1084.JPG?ex=6a5ab835&is=6a5966b5&hm=22f9ca58a387e7b057535d89d2ede9be8897f46a9697975670a2f68e11072f72&=&format=webp&width=743&height=990" alt=""></div>
+          <span class="comparison-label before">Before</span>
+          <span class="comparison-label after">After</span>
+          <div class="comparison-divider"></div>
+          <input class="comparison-slider" type="range" min="0" max="100" value="50" aria-label="Compare before and after editing for photo two">
+        </div>
+        <p class="comparison-caption">A soft, polished finish</p>
+      </div>
+      <div class="comparison-card">
+        <div class="comparison-image">
+          <img src="https://cdn.discordapp.com/attachments/1418770197032079403/1527506469610721370/685C038F-6B54-40A4-A9E1-D4E4C2B5A2C1.jpg?ex=6a5ae8c2&is=6a599742&hm=18811a1e3e24f14364062fe324f9a16d6bba2ad16601c32adfd4e7cc231e36f6&" alt="Edited portrait">
+          <div class="comparison-before"><img src="https://cdn.discordapp.com/attachments/1418770197032079403/1527506469610721370/685C038F-6B54-40A4-A9E1-D4E4C2B5A2C1.jpg?ex=6a5ae8c2&is=6a599742&hm=18811a1e3e24f14364062fe324f9a16d6bba2ad16601c32adfd4e7cc231e36f6&" alt=""></div>
+          <span class="comparison-label before">Before</span>
+          <span class="comparison-label after">After</span>
+          <div class="comparison-divider"></div>
+          <input class="comparison-slider" type="range" min="0" max="100" value="50" aria-label="Compare before and after editing for photo three">
+        </div>
+        <p class="comparison-caption">Clean tones and balanced contrast</p>
+      </div>
+      <div class="comparison-card">
+        <div class="comparison-image">
+          <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1572379181520658606/gator2.jpg?ex=6afe27ba&is=6afcd63a&hm=0941f392fd8e22ed98c3a6d38fcc7e0d05c9523921c397c01c20c782d3a04652&" alt="Edited gator photo">
+          <div class="comparison-before"><img src="https://media.discordapp.net/attachments/1403948357193564163/1572379211413332110/gator.JPG?ex=6afe27c1&is=6afcd641&hm=6c258b24c7a69a77c20fdc483837112980053dbc8c36f8862aec5825085b68e1&format=webp&width=769&height=1024" alt="Original gator photo"></div>
+          <span class="comparison-label before">Before</span>
+          <span class="comparison-label after">After</span>
+          <div class="comparison-divider"></div>
+          <input class="comparison-slider" type="range" min="0" max="100" value="50" aria-label="Compare gator photo before and after editing">
+        </div>
+        <p class="comparison-caption">Gator photo editing</p>
+      </div>
+      <div class="comparison-card">
+        <div class="comparison-image">
+          <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1572380652718784763/604ef421-909e-423b-a8e2-08e477b51a0d.jpg?ex=6afe2919&is=6afcd799&hm=43618d945090c3f56f42d3ad4e6a3a122ca563ce9415b208449025dbde009437&" alt="Edited photo">
+          <div class="comparison-before"><img src="https://cdn.discordapp.com/attachments/1403948357193564163/1572380754879586475/image.png?ex=6afe2931&is=6afcd7b1&hm=98b66d4821cf1b688ae06e8b4d7616f21b16c0f7acde1b89fc5fe5d270a87718&" alt="Original photo"></div>
+          <span class="comparison-label before">Before</span>
+          <span class="comparison-label after">After</span>
+          <div class="comparison-divider"></div>
+          <input class="comparison-slider" type="range" min="0" max="100" value="50" aria-label="Compare photo before and after editing">
+        </div>
+        <p class="comparison-caption">Photo editing</p>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="about">
     <div class="section-header">
       <h2>About Me</h2>
       <p>A little bit about Tyla Photography.</p>
     </div>
-    <div class="card feature">
-      <p>Hi, I’m Tyla. I love capturing natural moments, special memories, and beautiful stories through photography.</p>
-      <p>My goal is to make every session feel comfortable, creative, and fun.</p>
-      <p>I work with portraits, family sessions, events, and special occasions.</p>
-      <p>I enjoy turning everyday moments into memories that last forever.</p>
+    <div class="card feature about-glance">
+      <img src="https://cdn.discordapp.com/attachments/1403948357193564163/1572383309852315718/IMG_5195.jpg?ex=6afe2b92&is=6afcda12&hm=943620ab1da94fbf79290c015b2e9d603e262a55d85d3d0524585ff289699328&" alt="Tyla outdoors, smiling over her shoulder">
+      <div class="about-glance-copy">
+        <h3>A Glance at Me</h3>
+        <p>Hi, I’m Tyla. I love capturing natural moments, special memories, and beautiful stories through photography.</p>
+        <p>My goal is to make every session feel comfortable, creative, and fun.</p>
+        <p>I work with portraits, family sessions, events, and special occasions.</p>
+        <p>I enjoy turning everyday moments into memories that last forever.</p>
+      </div>
     </div>
   </section>
 
@@ -722,6 +937,12 @@ function toggleTheme(){
 document.querySelector('.modal-close').addEventListener('click', closeModal);
 document.getElementById('imageModal').addEventListener('click', function(e){
   if(e.target === this) closeModal();
+});
+
+document.querySelectorAll('.comparison-slider').forEach(function(slider){
+  slider.addEventListener('input', function(){
+    this.closest('.comparison-image').style.setProperty('--position', this.value + '%');
+  });
 });
 </script>
 </body>
